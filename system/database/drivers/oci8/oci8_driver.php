@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +32,17 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  * @since	Version 1.4.1
  * @filesource
  */
@@ -48,7 +59,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage  Drivers
  * @category	Database
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/database/
+=======
+ * @link		http://codeigniter.com/user_guide/database/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  */
 
 /**
@@ -102,6 +117,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
 	 * Reset $stmt_id flag
 	 *
 	 * Used by stored_procedure() to prevent _execute() from
@@ -110,6 +126,8 @@ class CI_DB_oci8_driver extends CI_DB {
 	protected $_reset_stmt_id = TRUE;
 
 	/**
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	 * List of reserved identifiers
 	 *
 	 * Identifiers that must NOT be escaped.
@@ -252,6 +270,7 @@ class CI_DB_oci8_driver extends CI_DB {
 			return $this->data_cache['version'];
 		}
 
+<<<<<<< HEAD
 		if ( ! $this->conn_id OR ($version_string = oci_server_version($this->conn_id)) === FALSE)
 		{
 			return FALSE;
@@ -262,6 +281,14 @@ class CI_DB_oci8_driver extends CI_DB {
 		}
 
 		return FALSE;
+=======
+		if ( ! $this->conn_id OR ($version = oci_server_version($this->conn_id)) === FALSE)
+		{
+			return FALSE;
+		}
+
+		return $this->data_cache['version'] = $version;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	}
 
 	// --------------------------------------------------------------------
@@ -277,6 +304,7 @@ class CI_DB_oci8_driver extends CI_DB {
 		/* Oracle must parse the query before it is run. All of the actions with
 		 * the query are based on the statement id returned by oci_parse().
 		 */
+<<<<<<< HEAD
 		if ($this->_reset_stmt_id === TRUE)
 		{
 			$this->stmt_id = oci_parse($this->conn_id, $sql);
@@ -284,6 +312,28 @@ class CI_DB_oci8_driver extends CI_DB {
 
 		oci_set_prefetch($this->stmt_id, 1000);
 		return oci_execute($this->stmt_id, $this->commit_mode);
+=======
+		$this->stmt_id = FALSE;
+		$this->_set_stmt_id($sql);
+		oci_set_prefetch($this->stmt_id, 1000);
+		return oci_execute($this->stmt_id, $this->commit_mode);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Generate a statement ID
+	 *
+	 * @param	string	$sql	an SQL query
+	 * @return	void
+	 */
+	protected function _set_stmt_id($sql)
+	{
+		if ( ! is_resource($this->stmt_id))
+		{
+			$this->stmt_id = oci_parse($this->conn_id, $sql);
+		}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	}
 
 	// --------------------------------------------------------------------
@@ -310,6 +360,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	 *
 	 * params array keys
 	 *
+<<<<<<< HEAD
 	 * KEY      OPTIONAL  NOTES
 	 * name     no        the name of the parameter should be in :<param_name> format
 	 * value    no        the value of the parameter.  If this is an OUT or IN OUT parameter,
@@ -320,12 +371,28 @@ class CI_DB_oci8_driver extends CI_DB {
 	public function stored_procedure($package, $procedure, array $params)
 	{
 		if ($package === '' OR $procedure === '')
+=======
+	 * KEY	  OPTIONAL	NOTES
+	 * name		no	the name of the parameter should be in :<param_name> format
+	 * value	no	the value of the parameter.  If this is an OUT or IN OUT parameter,
+	 *				this should be a reference to a variable
+	 * type		yes	the type of the parameter
+	 * length	yes	the max size of the parameter
+	 */
+	public function stored_procedure($package, $procedure, $params)
+	{
+		if ($package === '' OR $procedure === '' OR ! is_array($params))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		{
 			log_message('error', 'Invalid query: '.$package.'.'.$procedure);
 			return ($this->db_debug) ? $this->display_error('db_invalid_query') : FALSE;
 		}
 
+<<<<<<< HEAD
 		// Build the query string
+=======
+		// build the query string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		$sql = 'BEGIN '.$package.'.'.$procedure.'(';
 
 		$have_cursor = FALSE;
@@ -340,12 +407,19 @@ class CI_DB_oci8_driver extends CI_DB {
 		}
 		$sql = trim($sql, ',').'); END;';
 
+<<<<<<< HEAD
 		$this->_reset_stmt_id = FALSE;
 		$this->stmt_id = oci_parse($this->conn_id, $sql);
 		$this->_bind_params($params);
 		$result = $this->query($sql, FALSE, $have_cursor);
 		$this->_reset_stmt_id = TRUE;
 		return $result;
+=======
+		$this->stmt_id = FALSE;
+		$this->_set_stmt_id($sql);
+		$this->_bind_params($params);
+		return $this->query($sql, FALSE, $have_cursor);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	}
 
 	// --------------------------------------------------------------------
@@ -382,11 +456,36 @@ class CI_DB_oci8_driver extends CI_DB {
 	/**
 	 * Begin Transaction
 	 *
+<<<<<<< HEAD
 	 * @return	bool
 	 */
 	protected function _trans_begin()
 	{
 		$this->commit_mode = OCI_NO_AUTO_COMMIT;
+=======
+	 * @param	bool	$test_mode
+	 * @return	bool
+	 */
+	public function trans_begin($test_mode = FALSE)
+	{
+		if ( ! $this->trans_enabled)
+		{
+			return TRUE;
+		}
+
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ($this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+		// Reset the transaction failure flag.
+		// If the $test_mode flag is set to TRUE transactions will be rolled back
+		// even if the queries produce a successful result.
+		$this->_trans_failure = ($test_mode === TRUE);
+
+		$this->commit_mode = is_php('5.3.2') ? OCI_NO_AUTO_COMMIT : OCI_DEFAULT;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		return TRUE;
 	}
 
@@ -397,10 +496,27 @@ class CI_DB_oci8_driver extends CI_DB {
 	 *
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	protected function _trans_commit()
 	{
 		$this->commit_mode = OCI_COMMIT_ON_SUCCESS;
 
+=======
+	public function trans_commit()
+	{
+		if ( ! $this->trans_enabled)
+		{
+			return TRUE;
+		}
+
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ($this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+		$this->commit_mode = OCI_COMMIT_ON_SUCCESS;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		return oci_commit($this->conn_id);
 	}
 
@@ -411,8 +527,19 @@ class CI_DB_oci8_driver extends CI_DB {
 	 *
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	protected function _trans_rollback()
 	{
+=======
+	public function trans_rollback()
+	{
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		$this->commit_mode = OCI_COMMIT_ON_SUCCESS;
 		return oci_rollback($this->conn_id);
 	}
@@ -541,7 +668,11 @@ class CI_DB_oci8_driver extends CI_DB {
 			{
 				$default = '';
 			}
+<<<<<<< HEAD
 			$retval[$i]->default = $default;
+=======
+			$retval[$i]->default		= $query[$i]->COLUMN_DEFAULT;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		}
 
 		return $retval;
@@ -553,12 +684,17 @@ class CI_DB_oci8_driver extends CI_DB {
 	 * Error
 	 *
 	 * Returns an array containing code and message of the last
+<<<<<<< HEAD
 	 * database error that has occurred.
+=======
+	 * database error that has occured.
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	 *
 	 * @return	array
 	 */
 	public function error()
 	{
+<<<<<<< HEAD
 		// oci_error() returns an array that already contains
 		// 'code' and 'message' keys, but it can return false
 		// if there was no error ....
@@ -582,6 +718,25 @@ class CI_DB_oci8_driver extends CI_DB {
 		return is_array($error)
 			? $error
 			: array('code' => '', 'message' => '');
+=======
+		/* oci_error() returns an array that already contains the
+		 * 'code' and 'message' keys, so we can just return it.
+		 */
+		if (is_resource($this->curs_id))
+		{
+			return oci_error($this->curs_id);
+		}
+		elseif (is_resource($this->stmt_id))
+		{
+			return oci_error($this->stmt_id);
+		}
+		elseif (is_resource($this->conn_id))
+		{
+			return oci_error($this->conn_id);
+		}
+
+		return oci_error();
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	}
 
 	// --------------------------------------------------------------------
@@ -660,6 +815,7 @@ class CI_DB_oci8_driver extends CI_DB {
 	 */
 	protected function _limit($sql)
 	{
+<<<<<<< HEAD
 		if (version_compare($this->version(), '12.1', '>='))
 		{
 			// OFFSET-FETCH can be used only with the ORDER BY clause
@@ -668,6 +824,8 @@ class CI_DB_oci8_driver extends CI_DB {
 			return $sql.' OFFSET '.(int) $this->qb_offset.' ROWS FETCH NEXT '.$this->qb_limit.' ROWS ONLY';
 		}
 
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		$this->limit_used = TRUE;
 		return 'SELECT * FROM (SELECT inner_query.*, rownum rnum FROM ('.$sql.') inner_query WHERE rownum < '.($this->qb_offset + $this->qb_limit + 1).')'
 			.($this->qb_offset ? ' WHERE rnum >= '.($this->qb_offset + 1) : '');

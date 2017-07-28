@@ -39,15 +39,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
+<<<<<<< HEAD
 $autoload['packages'] = array();
 
+=======
+
+$autoload['packages'] = array();
+
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 /*
 | -------------------------------------------------------------------
 |  Auto-load Libraries
 | -------------------------------------------------------------------
+<<<<<<< HEAD
 | These are the classes located in system/libraries/ or your
 | application/libraries/ directory, with the addition of the
 | 'database' library, which is somewhat of a special case.
+=======
+| These are the classes located in the system/libraries folder
+| or in your application/libraries folder.
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 |
 | Prototype:
 |
@@ -58,20 +70,32 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< HEAD
 $autoload['libraries'] = array('database','curl','session','User_Auth');
+=======
+
+$autoload['libraries'] = array('database', 'session');
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 
 /*
 | -------------------------------------------------------------------
 |  Auto-load Drivers
 | -------------------------------------------------------------------
+<<<<<<< HEAD
 | These classes are located in system/libraries/ or in your
 | application/libraries/ directory, but are also placed inside their
 | own subdirectory and they extend the CI_Driver_Library class. They
+=======
+| These classes are located in the system/libraries folder or in your
+| application/libraries folder within their own subdirectory. They
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 | offer multiple interchangeable driver options.
 |
 | Prototype:
 |
 |	$autoload['drivers'] = array('cache');
+<<<<<<< HEAD
 |
 | You can also supply an alternative property name to be assigned in
 | the controller:
@@ -81,6 +105,13 @@ $autoload['libraries'] = array('database','curl','session','User_Auth');
 */
 $autoload['drivers'] = array();
 
+=======
+*/
+
+$autoload['drivers'] = array();
+
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 /*
 | -------------------------------------------------------------------
 |  Auto-load Helper Files
@@ -89,7 +120,13 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< HEAD
 $autoload['helper'] = array('url','form','my');
+=======
+
+$autoload['helper'] = array('url');
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 
 /*
 | -------------------------------------------------------------------
@@ -103,8 +140,15 @@ $autoload['helper'] = array('url','form','my');
 | config files.  Otherwise, leave it blank.
 |
 */
+<<<<<<< HEAD
 $autoload['config'] = array();
 
+=======
+
+$autoload['config'] = array();
+
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 /*
 | -------------------------------------------------------------------
 |  Auto-load Language files
@@ -117,8 +161,15 @@ $autoload['config'] = array();
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
+<<<<<<< HEAD
 $autoload['language'] = array();
 
+=======
+
+$autoload['language'] = array();
+
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 /*
 | -------------------------------------------------------------------
 |  Auto-load Models
@@ -132,4 +183,9 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
+<<<<<<< HEAD
 $autoload['model'] = array('UserInterface','AdminInterface','OutletInterface','KurirInterface');
+=======
+
+$autoload['model'] = array();
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7

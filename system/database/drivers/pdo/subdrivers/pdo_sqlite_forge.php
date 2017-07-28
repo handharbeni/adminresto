@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +32,17 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  * @since	Version 3.0.0
  * @filesource
  */
@@ -42,7 +53,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @category	Database
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/database/
+=======
+ * @link		http://codeigniter.com/user_guide/database/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  */
 class CI_DB_pdo_sqlite_forge extends CI_DB_pdo_forge {
 
@@ -89,7 +104,10 @@ class CI_DB_pdo_sqlite_forge extends CI_DB_pdo_forge {
 		if (version_compare($this->db->version(), '3.3', '<'))
 		{
 			$this->_create_table_if = FALSE;
+<<<<<<< HEAD
 			$this->_drop_table_if   = FALSE;
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		}
 	}
 
@@ -101,7 +119,11 @@ class CI_DB_pdo_sqlite_forge extends CI_DB_pdo_forge {
 	 * @param	string	$db_name	(ignored)
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	public function create_database($db_name)
+=======
+	public function create_database($db_name = '')
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	{
 		// In SQLite, a database is created when you connect to the database.
 		// We'll return TRUE so that an error isn't generated
@@ -116,7 +138,11 @@ class CI_DB_pdo_sqlite_forge extends CI_DB_pdo_forge {
 	 * @param	string	$db_name	(ignored)
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	public function drop_database($db_name)
+=======
+	public function drop_database($db_name = '')
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	{
 		// In SQLite, a database is dropped when we delete a file
 		if (file_exists($this->db->database))

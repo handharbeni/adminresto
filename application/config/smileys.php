@@ -10,9 +10,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | :-) and :) use the same image replacement.
 |
 | Please see user guide for more info:
+<<<<<<< HEAD
 | https://codeigniter.com/user_guide/helpers/smiley_helper.html
 |
 */
+=======
+| http://codeigniter.com/user_guide/helpers/smiley_helper.html
+|
+*/
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 $smileys = array(
 
 //	smiley			image name						width	height	alt

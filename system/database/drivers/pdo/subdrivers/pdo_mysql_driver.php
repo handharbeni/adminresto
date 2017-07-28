@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +32,17 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  * @since	Version 3.0.0
  * @filesource
  */
@@ -48,7 +59,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Drivers
  * @category	Database
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/database/
+=======
+ * @link		http://codeigniter.com/user_guide/database/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  */
 class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 
@@ -73,7 +88,11 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	 *
 	 * @var	bool
 	 */
+<<<<<<< HEAD
 	public $stricton;
+=======
+	public $stricton = FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 
 	// --------------------------------------------------------------------
 
@@ -106,7 +125,11 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 			empty($this->database) OR $this->dsn .= ';dbname='.$this->database;
 			empty($this->char_set) OR $this->dsn .= ';charset='.$this->char_set;
 		}
+<<<<<<< HEAD
 		elseif ( ! empty($this->char_set) && strpos($this->dsn, 'charset=', 6) === FALSE)
+=======
+		elseif ( ! empty($this->char_set) && strpos($this->dsn, 'charset=', 6) === FALSE && is_php('5.3.6'))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		{
 			$this->dsn .= ';charset='.$this->char_set;
 		}
@@ -119,6 +142,7 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	 *
 	 * @param	bool	$persistent
 	 * @return	object
+<<<<<<< HEAD
 	 */
 	public function db_connect($persistent = FALSE)
 	{
@@ -150,6 +174,32 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 				{
 					$this->options[PDO::MYSQL_ATTR_INIT_COMMAND] .= ', @@session.sql_mode = '.$sql;
 				}
+=======
+	 * @todo	SSL support
+	 */
+	public function db_connect($persistent = FALSE)
+	{
+		/* Prior to PHP 5.3.6, even if the charset was supplied in the DSN
+		 * on connect - it was ignored. This is a work-around for the issue.
+		 *
+		 * Reference: http://www.php.net/manual/en/ref.pdo-mysql.connection.php
+		 */
+		if ( ! is_php('5.3.6') && ! empty($this->char_set))
+		{
+			$this->options[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET NAMES '.$this->char_set
+				.(empty($this->dbcollat) ? '' : ' COLLATE '.$this->dbcollat);
+		}
+
+		if ($this->stricton)
+		{
+			if (empty($this->options[PDO::MYSQL_ATTR_INIT_COMMAND]))
+			{
+				$this->options[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET SESSION sql_mode="STRICT_ALL_TABLES"';
+			}
+			else
+			{
+				$this->options[PDO::MYSQL_ATTR_INIT_COMMAND] .= ', @@session.sql_mode = "STRICT_ALL_TABLES"';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 			}
 		}
 
@@ -158,6 +208,7 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 			$this->options[PDO::MYSQL_ATTR_COMPRESS] = TRUE;
 		}
 
+<<<<<<< HEAD
 		if (is_array($this->encrypt))
 		{
 			$ssl = array();
@@ -260,6 +311,9 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 		}
 
 		return FALSE;
+=======
+		return parent::db_connect($persistent);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	}
 
 	// --------------------------------------------------------------------

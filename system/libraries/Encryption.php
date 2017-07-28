@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +32,17 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  * @since	Version 3.0.0
  * @filesource
  */
@@ -46,7 +57,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Libraries
  * @author		Andrey Andreev
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/libraries/encryption.html
+=======
+ * @link		http://codeigniter.com/user_guide/libraries/encryption.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  */
 class CI_Encryption {
 
@@ -121,7 +136,11 @@ class CI_Encryption {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * List of supported HMAC algorithms
+=======
+	 * List of supported HMAC algorightms
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	 *
 	 * name => digest size pairs
 	 *
@@ -135,11 +154,19 @@ class CI_Encryption {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * mbstring.func_overload flag
 	 *
 	 * @var	bool
 	 */
 	protected static $func_overload;
+=======
+	 * mbstring.func_override flag
+	 *
+	 * @var	bool
+	 */
+	protected static $func_override;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 
 	// --------------------------------------------------------------------
 
@@ -152,8 +179,15 @@ class CI_Encryption {
 	public function __construct(array $params = array())
 	{
 		$this->_drivers = array(
+<<<<<<< HEAD
 			'mcrypt'  => defined('MCRYPT_DEV_URANDOM'),
 			'openssl' => extension_loaded('openssl')
+=======
+			'mcrypt' => defined('MCRYPT_DEV_URANDOM'),
+			// While OpenSSL is available for PHP 5.3.0, an IV parameter
+			// for the encrypt/decrypt functions is only available since 5.3.3
+			'openssl' => (is_php('5.3.3') && extension_loaded('openssl'))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		);
 
 		if ( ! $this->_drivers['mcrypt'] && ! $this->_drivers['openssl'])
@@ -161,7 +195,11 @@ class CI_Encryption {
 			show_error('Encryption: Unable to find an available encryption driver.');
 		}
 
+<<<<<<< HEAD
 		isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+=======
+		isset(self::$func_override) OR self::$func_override = (extension_loaded('mbstring') && ini_get('mbstring.func_override'));
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		$this->initialize($params);
 
 		if ( ! isset($this->_key) && self::strlen($key = config_item('encryption_key')) > 0)
@@ -335,6 +373,7 @@ class CI_Encryption {
 	 */
 	public function create_key($length)
 	{
+<<<<<<< HEAD
 		if (function_exists('random_bytes'))
 		{
 			try
@@ -357,6 +396,11 @@ class CI_Encryption {
 		return ($is_secure === TRUE)
 			? $key
 			: FALSE;
+=======
+		return ($this->_driver === 'mcrypt')
+			? mcrypt_create_iv($length, MCRYPT_DEV_URANDOM)
+			: openssl_random_pseudo_bytes($length);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	}
 
 	// --------------------------------------------------------------------
@@ -412,7 +456,11 @@ class CI_Encryption {
 		// The greater-than-1 comparison is mostly a work-around for a bug,
 		// where 1 is returned for ARCFour instead of 0.
 		$iv = (($iv_size = mcrypt_enc_get_iv_size($params['handle'])) > 1)
+<<<<<<< HEAD
 			? $this->create_key($iv_size)
+=======
+			? mcrypt_create_iv($iv_size, MCRYPT_DEV_URANDOM)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 			: NULL;
 
 		if (mcrypt_generic_init($params['handle'], $params['key'], $iv) < 0)
@@ -475,7 +523,11 @@ class CI_Encryption {
 		}
 
 		$iv = ($iv_size = openssl_cipher_iv_length($params['handle']))
+<<<<<<< HEAD
 			? $this->create_key($iv_size)
+=======
+			? openssl_random_pseudo_bytes($iv_size)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 			: NULL;
 
 		$data = openssl_encrypt(
@@ -907,11 +959,19 @@ class CI_Encryption {
 	 * Byte-safe strlen()
 	 *
 	 * @param	string	$str
+<<<<<<< HEAD
 	 * @return	int
 	 */
 	protected static function strlen($str)
 	{
 		return (self::$func_overload)
+=======
+	 * @return	integer
+	 */
+	protected static function strlen($str)
+	{
+		return (self::$func_override)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 			? mb_strlen($str, '8bit')
 			: strlen($str);
 	}
@@ -928,7 +988,11 @@ class CI_Encryption {
 	 */
 	protected static function substr($str, $start, $length = NULL)
 	{
+<<<<<<< HEAD
 		if (self::$func_overload)
+=======
+		if (self::$func_override)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		{
 			// mb_substr($str, $start, null, '8bit') returns an empty
 			// string on PHP 5.3

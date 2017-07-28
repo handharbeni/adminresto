@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +32,17 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  * @since	Version 1.0.0
  * @filesource
  */
@@ -44,7 +55,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Helpers
  * @category	Helpers
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/helpers/array_helper.html
+=======
+ * @link		http://codeigniter.com/user_guide/helpers/array_helper.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  */
 
 // ------------------------------------------------------------------------
@@ -62,7 +77,11 @@ if ( ! function_exists('element'))
 	 * @param	mixed
 	 * @return	mixed	depends on what the array contains
 	 */
+<<<<<<< HEAD
 	function element($item, array $array, $default = NULL)
+=======
+	function element($item, $array, $default = NULL)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	{
 		return array_key_exists($item, $array) ? $array[$item] : $default;
 	}
@@ -99,7 +118,11 @@ if ( ! function_exists('elements'))
 	 * @param	mixed
 	 * @return	mixed	depends on what the array contains
 	 */
+<<<<<<< HEAD
 	function elements($items, array $array, $default = NULL)
+=======
+	function elements($items, $array, $default = NULL)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	{
 		$return = array();
 

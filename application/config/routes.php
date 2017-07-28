@@ -19,7 +19,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
+<<<<<<< HEAD
 |	https://codeigniter.com/user_guide/general/routing.html
+=======
+|	http://codeigniter.com/user_guide/general/routing.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -49,7 +53,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+<<<<<<< HEAD
 $route['default_controller'] = 'welcome';
 $route['(:any)'] = 'welcome/halaman/$1';
+=======
+
+$route['default_controller'] = 'mahasiswa/index';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

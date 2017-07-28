@@ -6,7 +6,11 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +32,17 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  * @since	Version 1.0.0
  * @filesource
  */
@@ -44,7 +55,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Helpers
  * @category	Helpers
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/helpers/url_helper.html
+=======
+ * @link		http://codeigniter.com/user_guide/helpers/url_helper.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
  */
 
 // ------------------------------------------------------------------------
@@ -161,7 +176,11 @@ if ( ! function_exists('anchor'))
 
 		$site_url = is_array($uri)
 			? site_url($uri)
+<<<<<<< HEAD
 			: (preg_match('#^(\w+:)?//#i', $uri) ? $uri : site_url($uri));
+=======
+			: preg_match('#^(\w+:)?//#i', $uri) ? $uri : site_url($uri);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 
 		if ($title === '')
 		{
@@ -474,7 +493,11 @@ if ( ! function_exists('url_title'))
 	 * @param	string	$str		Input string
 	 * @param	string	$separator	Word separator
 	 *			(usually '-' or '_')
+<<<<<<< HEAD
 	 * @param	bool	$lowercase	Whether to transform the output string to lowercase
+=======
+	 * @param	bool	$lowercase	Wether to transform the output string to lowercase
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 	 * @return	string
 	 */
 	function url_title($str, $separator = '-', $lowercase = FALSE)
@@ -492,7 +515,11 @@ if ( ! function_exists('url_title'))
 
 		$trans = array(
 			'&.+?;'			=> '',
+<<<<<<< HEAD
 			'[^\w\d _-]'		=> '',
+=======
+			'[^a-z0-9 _-]'		=> '',
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 			'\s+'			=> $separator,
 			'('.$q_separator.')+'	=> $separator
 		);
@@ -500,7 +527,11 @@ if ( ! function_exists('url_title'))
 		$str = strip_tags($str);
 		foreach ($trans as $key => $val)
 		{
+<<<<<<< HEAD
 			$str = preg_replace('#'.$key.'#i'.(UTF8_ENABLED ? 'u' : ''), $val, $str);
+=======
+			$str = preg_replace('#'.$key.'#i', $val, $str);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
 		}
 
 		if ($lowercase === TRUE)
