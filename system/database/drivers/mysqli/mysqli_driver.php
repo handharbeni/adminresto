@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.3.0
  * @filesource
  */
@@ -48,7 +69,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Drivers
  * @category	Database
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/database/
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/database/
+=======
+ * @link		http://codeigniter.com/user_guide/database/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_DB_mysqli_driver extends CI_DB {
 
@@ -84,7 +113,15 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 *
 	 * @var	bool
 	 */
+<<<<<<< HEAD
 	public $stricton;
+=======
+<<<<<<< HEAD
+	public $stricton;
+=======
+	public $stricton = FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	// --------------------------------------------------------------------
 
@@ -98,6 +135,10 @@ class CI_DB_mysqli_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * MySQLi object
 	 *
 	 * Has to be preserved without being assigned to $conn_id.
@@ -109,10 +150,22 @@ class CI_DB_mysqli_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Database connection
 	 *
 	 * @param	bool	$persistent
 	 * @return	object
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	 * @todo	SSL support
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	public function db_connect($persistent = FALSE)
 	{
@@ -125,13 +178,26 @@ class CI_DB_mysqli_driver extends CI_DB {
 		}
 		else
 		{
+<<<<<<< HEAD
 			$hostname = ($persistent === TRUE)
+=======
+<<<<<<< HEAD
+			$hostname = ($persistent === TRUE)
+=======
+			// Persistent connection support was added in PHP 5.3.0
+			$hostname = ($persistent === TRUE && is_php('5.3'))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				? 'p:'.$this->hostname : $this->hostname;
 			$port = empty($this->port) ? NULL : $this->port;
 			$socket = NULL;
 		}
 
 		$client_flags = ($this->compress === TRUE) ? MYSQLI_CLIENT_COMPRESS : 0;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->_mysqli = mysqli_init();
 
 		$this->_mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 10);
@@ -217,6 +283,22 @@ class CI_DB_mysqli_driver extends CI_DB {
 		}
 
 		return FALSE;
+<<<<<<< HEAD
+=======
+=======
+		$mysqli = mysqli_init();
+
+		$mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 10);
+
+		if ($this->stricton)
+		{
+			$mysqli->options(MYSQLI_INIT_COMMAND, 'SET SESSION sql_mode="STRICT_ALL_TABLES"');
+		}
+
+		return $mysqli->real_connect($hostname, $this->username, $this->password, $this->database, $port, $socket, $client_flags)
+			? $mysqli : FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -255,7 +337,14 @@ class CI_DB_mysqli_driver extends CI_DB {
 		if ($this->conn_id->select_db($database))
 		{
 			$this->database = $database;
+<<<<<<< HEAD
 			$this->data_cache = array();
+=======
+<<<<<<< HEAD
+			$this->data_cache = array();
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			return TRUE;
 		}
 
@@ -332,10 +421,35 @@ class CI_DB_mysqli_driver extends CI_DB {
 	/**
 	 * Begin Transaction
 	 *
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	bool
 	 */
 	protected function _trans_begin()
 	{
+<<<<<<< HEAD
+=======
+=======
+	 * @param	bool	$test_mode
+	 * @return	bool
+	 */
+	public function trans_begin($test_mode = FALSE)
+	{
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+		// Reset the transaction failure flag.
+		// If the $test_mode flag is set to TRUE transactions will be rolled back
+		// even if the queries produce a successful result.
+		$this->_trans_failure = ($test_mode === TRUE);
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->conn_id->autocommit(FALSE);
 		return is_php('5.5')
 			? $this->conn_id->begin_transaction()
@@ -349,8 +463,24 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 *
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	protected function _trans_commit()
 	{
+=======
+<<<<<<< HEAD
+	protected function _trans_commit()
+	{
+=======
+	public function trans_commit()
+	{
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ($this->conn_id->commit())
 		{
 			$this->conn_id->autocommit(TRUE);
@@ -367,8 +497,24 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 *
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	protected function _trans_rollback()
 	{
+=======
+<<<<<<< HEAD
+	protected function _trans_rollback()
+	{
+=======
+	public function trans_rollback()
+	{
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ($this->conn_id->rollback())
 		{
 			$this->conn_id->autocommit(TRUE);
@@ -381,7 +527,15 @@ class CI_DB_mysqli_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
 	 * Platform-dependent string escape
+=======
+<<<<<<< HEAD
+	 * Platform-dependent string escape
+=======
+	 * Platform-dependant string escape
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 *
 	 * @param	string
 	 * @return	string
@@ -498,11 +652,25 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */
 	public function error()
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ( ! empty($this->_mysqli->connect_errno))
 		{
 			return array(
 				'code'    => $this->_mysqli->connect_errno,
 				'message' => $this->_mysqli->connect_error
+<<<<<<< HEAD
+=======
+=======
+		if ( ! empty($this->conn_id->connect_errno))
+		{
+			return array(
+				'code' => $this->conn_id->connect_errno,
+				'message' => is_php('5.2.9') ? $this->conn_id->connect_error : mysqli_connect_error()
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			);
 		}
 

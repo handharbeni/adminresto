@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.0.0
  * @filesource
  */
@@ -42,7 +63,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @category	Database
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/database/
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/database/
+=======
+ * @link		http://codeigniter.com/user_guide/database/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 abstract class CI_DB_forge {
 
@@ -143,7 +172,15 @@ abstract class CI_DB_forge {
 	protected $_unsigned		= TRUE;
 
 	/**
+<<<<<<< HEAD
 	 * NULL value representation in CREATE/ALTER TABLE statements
+=======
+<<<<<<< HEAD
+	 * NULL value representation in CREATE/ALTER TABLE statements
+=======
+	 * NULL value representatin in CREATE/ALTER TABLE statements
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 *
 	 * @var	string
 	 */
@@ -184,7 +221,15 @@ abstract class CI_DB_forge {
 		{
 			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
 		}
+<<<<<<< HEAD
 		elseif ( ! $this->db->query(sprintf($this->_create_database, $this->db->escape_identifiers($db_name), $this->db->char_set, $this->db->dbcollat)))
+=======
+<<<<<<< HEAD
+		elseif ( ! $this->db->query(sprintf($this->_create_database, $this->db->escape_identifiers($db_name), $this->db->char_set, $this->db->dbcollat)))
+=======
+		elseif ( ! $this->db->query(sprintf($this->_create_database, $db_name, $this->db->char_set, $this->db->dbcollat)))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return ($this->db->db_debug) ? $this->db->display_error('db_unable_to_drop') : FALSE;
 		}
@@ -211,7 +256,15 @@ abstract class CI_DB_forge {
 		{
 			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
 		}
+<<<<<<< HEAD
 		elseif ( ! $this->db->query(sprintf($this->_drop_database, $this->db->escape_identifiers($db_name))))
+=======
+<<<<<<< HEAD
+		elseif ( ! $this->db->query(sprintf($this->_drop_database, $this->db->escape_identifiers($db_name))))
+=======
+		elseif ( ! $this->db->query(sprintf($this->_drop_database, $db_name)))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return ($this->db->db_debug) ? $this->db->display_error('db_unable_to_drop') : FALSE;
 		}
@@ -239,12 +292,21 @@ abstract class CI_DB_forge {
 	 */
 	public function add_key($key, $primary = FALSE)
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// DO NOT change this! This condition is only applicable
 		// for PRIMARY keys because you can only have one such,
 		// and therefore all fields you add to it will be included
 		// in the same, composite PRIMARY KEY.
 		//
 		// It's not the same for regular indexes.
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ($primary === TRUE && is_array($key))
 		{
 			foreach ($key as $one)
@@ -348,7 +410,15 @@ abstract class CI_DB_forge {
 
 		if (($result = $this->db->query($sql)) !== FALSE)
 		{
+<<<<<<< HEAD
 			isset($this->db->data_cache['table_names']) && $this->db->data_cache['table_names'][] = $table;
+=======
+<<<<<<< HEAD
+			isset($this->db->data_cache['table_names']) && $this->db->data_cache['table_names'][] = $table;
+=======
+			empty($this->db->data_cache['table_names']) OR $this->db->data_cache['table_names'][] = $table;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 			// Most databases don't support creating indexes from within the CREATE TABLE statement
 			if ( ! empty($this->keys))
@@ -459,7 +529,20 @@ abstract class CI_DB_forge {
 			return ($this->db->db_debug) ? $this->db->display_error('db_table_name_required') : FALSE;
 		}
 
+<<<<<<< HEAD
 		if (($query = $this->_drop_table($this->db->dbprefix.$table_name, $if_exists)) === TRUE)
+=======
+<<<<<<< HEAD
+		if (($query = $this->_drop_table($this->db->dbprefix.$table_name, $if_exists)) === TRUE)
+=======
+		$query = $this->_drop_table($this->db->dbprefix.$table_name, $if_exists);
+		if ($query === FALSE)
+		{
+			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
+		}
+		elseif ($query === TRUE)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return TRUE;
 		}
@@ -488,7 +571,15 @@ abstract class CI_DB_forge {
 	 *
 	 * @param	string	$table		Table name
 	 * @param	bool	$if_exists	Whether to add an IF EXISTS condition
+<<<<<<< HEAD
 	 * @return	mixed	(Returns a platform-specific DROP table string, or TRUE to indicate there's nothing to do)
+=======
+<<<<<<< HEAD
+	 * @return	mixed	(Returns a platform-specific DROP table string, or TRUE to indicate there's nothing to do)
+=======
+	 * @return	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	protected function _drop_table($table, $if_exists)
 	{
@@ -780,6 +871,16 @@ abstract class CI_DB_forge {
 					case 'ENUM':
 					case 'SET':
 						$attributes['CONSTRAINT'] = $this->db->escape($attributes['CONSTRAINT']);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+						$field['length'] = is_array($attributes['CONSTRAINT'])
+							? "('".implode("','", $attributes['CONSTRAINT'])."')"
+							: '('.$attributes['CONSTRAINT'].')';
+						break;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 					default:
 						$field['length'] = is_array($attributes['CONSTRAINT'])
 							? '('.implode(',', $attributes['CONSTRAINT']).')'
@@ -979,8 +1080,18 @@ abstract class CI_DB_forge {
 	/**
 	 * Process indexes
 	 *
+<<<<<<< HEAD
 	 * @param	string	$table	Table name
 	 * @return	string[] list of SQL statements
+=======
+<<<<<<< HEAD
+	 * @param	string	$table	Table name
+	 * @return	string[] list of SQL statements
+=======
+	 * @param	string	$table
+	 * @return	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	protected function _process_indexes($table)
 	{

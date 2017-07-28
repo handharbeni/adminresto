@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.4.1
  * @filesource
  */
@@ -42,7 +63,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @category	Database
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/database/
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/database/
+=======
+ * @link		http://codeigniter.com/user_guide/database/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_DB_oci8_forge extends CI_DB_forge {
 
@@ -54,6 +83,10 @@ class CI_DB_oci8_forge extends CI_DB_forge {
 	protected $_create_database	= FALSE;
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * CREATE TABLE IF statement
 	 *
 	 * @var	string
@@ -61,6 +94,11 @@ class CI_DB_oci8_forge extends CI_DB_forge {
 	protected $_create_table_if	= FALSE;
 
 	/**
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * DROP DATABASE statement
 	 *
 	 * @var	string
@@ -124,10 +162,21 @@ class CI_DB_oci8_forge extends CI_DB_forge {
 				if ($alter_type === 'MODIFY' && ! empty($field[$i]['new_name']))
 				{
 					$sqls[] = $sql.' RENAME COLUMN '.$this->db->escape_identifiers($field[$i]['name'])
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 						.' TO '.$this->db->escape_identifiers($field[$i]['new_name']);
 				}
 
 				$field[$i] = "\n\t".$field[$i]['_literal'];
+<<<<<<< HEAD
+=======
+=======
+						.' '.$this->db->escape_identifiers($field[$i]['new_name']);
+				}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			}
 		}
 
@@ -138,7 +187,15 @@ class CI_DB_oci8_forge extends CI_DB_forge {
 
 		// RENAME COLUMN must be executed after MODIFY
 		array_unshift($sqls, $sql);
+<<<<<<< HEAD
 		return $sqls;
+=======
+<<<<<<< HEAD
+		return $sqls;
+=======
+		return $sql;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -155,6 +212,10 @@ class CI_DB_oci8_forge extends CI_DB_forge {
 		// Not supported - sequences and triggers must be used instead
 	}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	// --------------------------------------------------------------------
 
 	/**
@@ -184,4 +245,9 @@ class CI_DB_oci8_forge extends CI_DB_forge {
 			default: return;
 		}
 	}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 }

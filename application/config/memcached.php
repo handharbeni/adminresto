@@ -7,7 +7,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | -------------------------------------------------------------------------
 | Your Memcached servers can be specified below.
 |
+<<<<<<< HEAD
 |	See: https://codeigniter.com/user_guide/libraries/caching.html#memcached
+=======
+<<<<<<< HEAD
+|	See: https://codeigniter.com/user_guide/libraries/caching.html#memcached
+=======
+|	See: http://codeigniter.com/user_guide/libraries/caching.html#memcached
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 |
 */
 $config = array(

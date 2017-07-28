@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.3.0
  * @filesource
  */
@@ -48,7 +69,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Drivers
  * @category	Database
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/database/
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/database/
+=======
+ * @link		http://codeigniter.com/user_guide/database/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_DB_mssql_driver extends CI_DB {
 
@@ -158,7 +187,14 @@ class CI_DB_mssql_driver extends CI_DB {
 		if (mssql_select_db('['.$database.']', $this->conn_id))
 		{
 			$this->database = $database;
+<<<<<<< HEAD
 			$this->data_cache = array();
+=======
+<<<<<<< HEAD
+			$this->data_cache = array();
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			return TRUE;
 		}
 
@@ -183,10 +219,35 @@ class CI_DB_mssql_driver extends CI_DB {
 	/**
 	 * Begin Transaction
 	 *
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	bool
 	 */
 	protected function _trans_begin()
 	{
+<<<<<<< HEAD
+=======
+=======
+	 * @param	bool	$test_mode
+	 * @return	bool
+	 */
+	public function trans_begin($test_mode = FALSE)
+	{
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+		// Reset the transaction failure flag.
+		// If the $test_mode flag is set to TRUE transactions will be rolled back
+		// even if the queries produce a successful result.
+		$this->_trans_failure = ($test_mode === TRUE);
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return $this->simple_query('BEGIN TRAN');
 	}
 
@@ -197,8 +258,24 @@ class CI_DB_mssql_driver extends CI_DB {
 	 *
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	protected function _trans_commit()
 	{
+=======
+<<<<<<< HEAD
+	protected function _trans_commit()
+	{
+=======
+	public function trans_commit()
+	{
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return $this->simple_query('COMMIT TRAN');
 	}
 
@@ -209,8 +286,24 @@ class CI_DB_mssql_driver extends CI_DB {
 	 *
 	 * @return	bool
 	 */
+<<<<<<< HEAD
 	protected function _trans_rollback()
 	{
+=======
+<<<<<<< HEAD
+	protected function _trans_rollback()
+	{
+=======
+	public function trans_rollback()
+	{
+		// When transactions are nested we only begin/commit/rollback the outermost ones
+		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
+		{
+			return TRUE;
+		}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return $this->simple_query('ROLLBACK TRAN');
 	}
 
@@ -268,7 +361,15 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	protected function _version()
 	{
+<<<<<<< HEAD
 		return "SELECT SERVERPROPERTY('ProductVersion') AS ver";
+=======
+<<<<<<< HEAD
+		return "SELECT SERVERPROPERTY('ProductVersion') AS ver";
+=======
+		return 'SELECT @@VERSION AS ver';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -352,12 +453,24 @@ class CI_DB_mssql_driver extends CI_DB {
 	 * Error
 	 *
 	 * Returns an array containing code and message of the last
+<<<<<<< HEAD
 	 * database error that has occurred.
+=======
+<<<<<<< HEAD
+	 * database error that has occurred.
+=======
+	 * database error that has occured.
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 *
 	 * @return	array
 	 */
 	public function error()
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// We need this because the error info is discarded by the
 		// server the first time you request it, and query() already
 		// calls error() once for logging purposes when a query fails.
@@ -371,6 +484,14 @@ class CI_DB_mssql_driver extends CI_DB {
 		}
 
 		return $error;
+<<<<<<< HEAD
+=======
+=======
+		$query = $this->query('SELECT @@ERROR AS code');
+		$query = $query->row();
+		return array('code' => $query->code, 'message' => mssql_get_last_message());
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -500,7 +621,15 @@ class CI_DB_mssql_driver extends CI_DB {
 			return parent::_insert_batch($table, $keys, $values);
 		}
 
+<<<<<<< HEAD
 		return ($this->db_debug) ? $this->display_error('db_unsupported_feature') : FALSE;
+=======
+<<<<<<< HEAD
+		return ($this->db_debug) ? $this->display_error('db_unsupported_feature') : FALSE;
+=======
+		return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------

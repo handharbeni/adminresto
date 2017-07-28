@@ -15,6 +15,7 @@ var validator = (function($){
     /* general text messages
     */
     message = {
+<<<<<<< HEAD
         invalid         : 'invalid input',
         checked         : 'must be checked',
         empty           : 'please put something here',
@@ -30,6 +31,23 @@ var validator = (function($){
         repeat          : 'no match',
         complete        : 'input is not complete',
         select          : 'Please select an option'
+=======
+        invalid         : 'input salah!',
+        checked         : 'harus di centang',
+        empty           : 'tidak boleh kosong',
+        min             : 'input terlalu pendek',
+        max             : 'input terlalu panjang',
+        number_min      : 'angka terlalu kecil',
+        number_max      : 'angka terlalu besar',
+        url             : 'invalid URL',
+        number          : 'bukan angka!',
+        email           : 'email tidak valid',
+        email_repeat    : 'email tidak boleh sama',
+        password_repeat : 'password tidak boleh sama',
+        repeat          : 'tidak boleh sama',
+        complete        : 'input belum selesai',
+        select          : 'Pilih salah satu'
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
     };
 
     if(!window.console){

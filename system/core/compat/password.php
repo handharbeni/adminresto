@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 3.0.0
  * @filesource
  */
@@ -44,13 +65,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	CodeIgniter
  * @category	Compatibility
  * @author		Andrey Andreev
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/
+=======
+ * @link		http://codeigniter.com/user_guide/
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @link		http://php.net/password
  */
 
 // ------------------------------------------------------------------------
 
+<<<<<<< HEAD
 if (is_php('5.5') OR ! defined('CRYPT_BLOWFISH') OR CRYPT_BLOWFISH !== 1 OR defined('HHVM_VERSION'))
+=======
+<<<<<<< HEAD
+if (is_php('5.5') OR ! defined('CRYPT_BLOWFISH') OR CRYPT_BLOWFISH !== 1 OR defined('HHVM_VERSION'))
+=======
+if (is_php('5.5') OR ! is_php('5.3.7') OR ! defined('CRYPT_BLOWFISH') OR CRYPT_BLOWFISH !== 1 OR defined('HHVM_VERSION'))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 {
 	return;
 }
@@ -94,8 +131,18 @@ if ( ! function_exists('password_hash'))
 	 */
 	function password_hash($password, $algo, array $options = array())
 	{
+<<<<<<< HEAD
 		static $func_overload;
 		isset($func_overload) OR $func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+=======
+<<<<<<< HEAD
+		static $func_overload;
+		isset($func_overload) OR $func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+=======
+		static $func_override;
+		isset($func_override) OR $func_override = (extension_loaded('mbstring') && ini_get('mbstring.func_override'));
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		if ($algo !== 1)
 		{
@@ -109,13 +156,25 @@ if ( ! function_exists('password_hash'))
 			return NULL;
 		}
 
+<<<<<<< HEAD
 		if (isset($options['salt']) && ($saltlen = ($func_overload ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))) < 22)
+=======
+<<<<<<< HEAD
+		if (isset($options['salt']) && ($saltlen = ($func_overload ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))) < 22)
+=======
+		if (isset($options['salt']) && ($saltlen = ($func_override ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))) < 22)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			trigger_error('password_hash(): Provided salt is too short: '.$saltlen.' expecting 22', E_USER_WARNING);
 			return NULL;
 		}
 		elseif ( ! isset($options['salt']))
 		{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			if (function_exists('random_bytes'))
 			{
 				try
@@ -131,6 +190,18 @@ if ( ! function_exists('password_hash'))
 			elseif (defined('MCRYPT_DEV_URANDOM'))
 			{
 				$options['salt'] = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+<<<<<<< HEAD
+=======
+=======
+			if (defined('MCRYPT_DEV_URANDOM'))
+			{
+				$options['salt'] = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+			}
+			elseif (function_exists('openssl_random_pseudo_bytes'))
+			{
+				$options['salt'] = openssl_random_pseudo_bytes(16);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			}
 			elseif (DIRECTORY_SEPARATOR === '/' && (is_readable($dev = '/dev/arandom') OR is_readable($dev = '/dev/urandom')))
 			{
@@ -144,7 +215,15 @@ if ( ! function_exists('password_hash'))
 				is_php('5.4') && stream_set_chunk_size($fp, 16);
 
 				$options['salt'] = '';
+<<<<<<< HEAD
 				for ($read = 0; $read < 16; $read = ($func_overload) ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))
+=======
+<<<<<<< HEAD
+				for ($read = 0; $read < 16; $read = ($func_overload) ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))
+=======
+				for ($read = 0; $read < 16; $read = ($func_override) ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				{
 					if (($read = fread($fp, 16 - $read)) === FALSE)
 					{
@@ -156,6 +235,10 @@ if ( ! function_exists('password_hash'))
 
 				fclose($fp);
 			}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			elseif (function_exists('openssl_random_pseudo_bytes'))
 			{
 				$is_secure = NULL;
@@ -166,6 +249,11 @@ if ( ! function_exists('password_hash'))
 					return FALSE;
 				}
 			}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			else
 			{
 				log_message('error', 'compat/password: No CSPRNG available.');

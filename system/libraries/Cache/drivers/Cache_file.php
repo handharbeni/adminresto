@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 2.0
  * @filesource
  */
@@ -120,7 +141,15 @@ class CI_Cache_file extends CI_Driver {
 	 */
 	public function delete($id)
 	{
+<<<<<<< HEAD
 		return is_file($this->_cache_path.$id) ? unlink($this->_cache_path.$id) : FALSE;
+=======
+<<<<<<< HEAD
+		return is_file($this->_cache_path.$id) ? unlink($this->_cache_path.$id) : FALSE;
+=======
+		return file_exists($this->_cache_path.$id) ? unlink($this->_cache_path.$id) : FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -216,7 +245,15 @@ class CI_Cache_file extends CI_Driver {
 	 */
 	public function get_metadata($id)
 	{
+<<<<<<< HEAD
 		if ( ! is_file($this->_cache_path.$id))
+=======
+<<<<<<< HEAD
+		if ( ! is_file($this->_cache_path.$id))
+=======
+		if ( ! file_exists($this->_cache_path.$id))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return FALSE;
 		}
@@ -227,13 +264,29 @@ class CI_Cache_file extends CI_Driver {
 		{
 			$mtime = filemtime($this->_cache_path.$id);
 
+<<<<<<< HEAD
 			if ( ! isset($data['ttl'], $data['time']))
+=======
+<<<<<<< HEAD
+			if ( ! isset($data['ttl'], $data['time']))
+=======
+			if ( ! isset($data['ttl']))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			{
 				return FALSE;
 			}
 
 			return array(
+<<<<<<< HEAD
 				'expire' => $data['time'] + $data['ttl'],
+=======
+<<<<<<< HEAD
+				'expire' => $data['time'] + $data['ttl'],
+=======
+				'expire' => $mtime + $data['ttl'],
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				'mtime'	 => $mtime
 			);
 		}
@@ -267,7 +320,15 @@ class CI_Cache_file extends CI_Driver {
 	 */
 	protected function _get($id)
 	{
+<<<<<<< HEAD
 		if ( ! is_file($this->_cache_path.$id))
+=======
+<<<<<<< HEAD
+		if ( ! is_file($this->_cache_path.$id))
+=======
+		if ( ! file_exists($this->_cache_path.$id))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return FALSE;
 		}

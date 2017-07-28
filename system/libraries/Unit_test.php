@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.3.1
  * @filesource
  */
@@ -46,7 +67,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	UnitTesting
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/libraries/unit_testing.html
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/libraries/unit_testing.html
+=======
+ * @link		http://codeigniter.com/user_guide/libraries/unit_testing.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_Unit_test {
 
@@ -55,14 +84,30 @@ class CI_Unit_test {
 	 *
 	 * @var	bool
 	 */
+<<<<<<< HEAD
 	public $active = TRUE;
+=======
+<<<<<<< HEAD
+	public $active = TRUE;
+=======
+	public $active			= TRUE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * Test results
 	 *
 	 * @var	array
 	 */
+<<<<<<< HEAD
 	public $results = array();
+=======
+<<<<<<< HEAD
+	public $results = array();
+=======
+	public $results			= array();
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * Strict comparison flag
@@ -71,21 +116,45 @@ class CI_Unit_test {
 	 *
 	 * @var	bool
 	 */
+<<<<<<< HEAD
 	public $strict = FALSE;
+=======
+<<<<<<< HEAD
+	public $strict = FALSE;
+=======
+	public $strict			= FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * Template
 	 *
 	 * @var	string
 	 */
+<<<<<<< HEAD
 	protected $_template = NULL;
+=======
+<<<<<<< HEAD
+	protected $_template = NULL;
+=======
+	protected $_template		= NULL;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * Template rows
 	 *
 	 * @var	string
 	 */
+<<<<<<< HEAD
 	protected $_template_rows = NULL;
+=======
+<<<<<<< HEAD
+	protected $_template_rows = NULL;
+=======
+	protected $_template_rows	= NULL;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * List of visible test items
@@ -93,6 +162,10 @@ class CI_Unit_test {
 	 * @var	array
 	 */
 	protected $_test_items_visible	= array(
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		'test_name',
 		'test_datatype',
 		'res_datatype',
@@ -100,6 +173,18 @@ class CI_Unit_test {
 		'file',
 		'line',
 		'notes'
+<<<<<<< HEAD
+=======
+=======
+			'test_name',
+			'test_datatype',
+			'res_datatype',
+			'result',
+			'file',
+			'line',
+			'notes'
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	);
 
 	// --------------------------------------------------------------------
@@ -152,8 +237,19 @@ class CI_Unit_test {
 			return FALSE;
 		}
 
+<<<<<<< HEAD
 		if (in_array($expected, array('is_object', 'is_string', 'is_bool', 'is_true', 'is_false', 'is_int', 'is_numeric', 'is_float', 'is_double', 'is_array', 'is_null', 'is_resource'), TRUE))
 		{
+=======
+<<<<<<< HEAD
+		if (in_array($expected, array('is_object', 'is_string', 'is_bool', 'is_true', 'is_false', 'is_int', 'is_numeric', 'is_float', 'is_double', 'is_array', 'is_null', 'is_resource'), TRUE))
+		{
+=======
+		if (in_array($expected, array('is_object', 'is_string', 'is_bool', 'is_true', 'is_false', 'is_int', 'is_numeric', 'is_float', 'is_double', 'is_array', 'is_null'), TRUE))
+		{
+			$expected = str_replace('is_double', 'is_float', $expected);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			$result = $expected($test);
 			$extype = str_replace(array('true', 'false'), 'bool', str_replace('is_', '', $expected));
 		}
@@ -166,6 +262,10 @@ class CI_Unit_test {
 		$back = $this->_backtrace();
 
 		$report = array (
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			'test_name'     => $test_name,
 			'test_datatype' => gettype($test),
 			'res_datatype'  => $extype,
@@ -174,6 +274,19 @@ class CI_Unit_test {
 			'line'          => $back['line'],
 			'notes'         => $notes
 		);
+<<<<<<< HEAD
+=======
+=======
+							'test_name'			=> $test_name,
+							'test_datatype'		=> gettype($test),
+							'res_datatype'		=> $extype,
+							'result'			=> ($result === TRUE) ? 'passed' : 'failed',
+							'file'				=> $back['file'],
+							'line'				=> $back['line'],
+							'notes'				=> $notes
+						);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		$this->results[] = $report;
 
@@ -290,12 +403,25 @@ class CI_Unit_test {
 				{
 					continue;
 				}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				elseif (in_array($key, array('test_name', 'test_datatype', 'res_datatype', 'result'), TRUE))
 				{
 					if (FALSE !== ($line = $CI->lang->line(strtolower('ut_'.$val), FALSE)))
 					{
 						$val = $line;
 					}
+<<<<<<< HEAD
+=======
+=======
+
+				if (FALSE !== ($line = $CI->lang->line(strtolower('ut_'.$val), FALSE)))
+				{
+					$val = $line;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				}
 
 				$temp[$CI->lang->line('ut_'.$key, FALSE)] = $val;
@@ -335,9 +461,21 @@ class CI_Unit_test {
 	{
 		$back = debug_backtrace();
 		return array(
+<<<<<<< HEAD
 			'file' => (isset($back[1]['file']) ? $back[1]['file'] : ''),
 			'line' => (isset($back[1]['line']) ? $back[1]['line'] : '')
 		);
+=======
+<<<<<<< HEAD
+			'file' => (isset($back[1]['file']) ? $back[1]['file'] : ''),
+			'line' => (isset($back[1]['line']) ? $back[1]['line'] : '')
+		);
+=======
+				'file' => (isset($back[1]['file']) ? $back[1]['file'] : ''),
+				'line' => (isset($back[1]['line']) ? $back[1]['line'] : '')
+			);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------

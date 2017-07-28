@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 2.0.0
  * @filesource
  */
@@ -49,6 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class CI_Cache_apc extends CI_Driver {
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Class constructor
 	 *
 	 * Only present so that an error message is logged
@@ -67,6 +92,11 @@ class CI_Cache_apc extends CI_Driver {
 	// ------------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Get
 	 *
 	 * Look for a value in the cache. If it exists, return the data
@@ -97,7 +127,15 @@ class CI_Cache_apc extends CI_Driver {
 	 *
 	 * @param	string	$id	Cache ID
 	 * @param	mixed	$data	Data to store
+<<<<<<< HEAD
 	 * @param	int	$ttl	Length of time (in seconds) to cache the data
+=======
+<<<<<<< HEAD
+	 * @param	int	$ttl	Length of time (in seconds) to cache the data
+=======
+	 * @param	int	$ttol	Length of time (in seconds) to cache the data
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @param	bool	$raw	Whether to store the raw value
 	 * @return	bool	TRUE on success, FALSE on failure
 	 */
@@ -216,6 +254,23 @@ class CI_Cache_apc extends CI_Driver {
 	 */
 	public function is_supported()
 	{
+<<<<<<< HEAD
 		return (extension_loaded('apc') && ini_get('apc.enabled'));
 	}
+=======
+<<<<<<< HEAD
+		return (extension_loaded('apc') && ini_get('apc.enabled'));
+	}
+=======
+		if ( ! extension_loaded('apc') OR ! ini_get('apc.enabled'))
+		{
+			log_message('debug', 'The APC PHP extension must be loaded to use APC Cache.');
+			return FALSE;
+		}
+
+		return TRUE;
+	}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 }

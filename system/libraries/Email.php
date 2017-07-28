@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.0.0
  * @filesource
  */
@@ -46,7 +67,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Libraries
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/libraries/email.html
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/libraries/email.html
+=======
+ * @link		http://codeigniter.com/user_guide/libraries/email.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_Email {
 
@@ -147,7 +176,22 @@ class CI_Email {
 	 *
 	 * @var	string
 	 */
+<<<<<<< HEAD
 	public $charset		= 'UTF-8';
+=======
+<<<<<<< HEAD
+	public $charset		= 'UTF-8';
+=======
+	public $charset		= 'utf-8';
+
+	/**
+	 * Multipart message
+	 *
+	 * @var	string	'mixed' (in the body) or 'related' (separate)
+	 */
+	public $multipart	= 'mixed';		// "mixed" (in the body) or "related" (separate)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * Alternative message (for HTML messages only)
@@ -254,6 +298,26 @@ class CI_Email {
 	protected $_finalbody		= '';
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	 * multipart/alternative boundary
+	 *
+	 * @var	string
+	 */
+	protected $_alt_boundary	= '';
+
+	/**
+	 * Attachment boundary
+	 *
+	 * @var	string
+	 */
+	protected $_atc_boundary	= '';
+
+	/**
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Final headers to send
 	 *
 	 * @var	string
@@ -374,6 +438,10 @@ class CI_Email {
 		5 => '5 (Lowest)'
 	);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	/**
 	 * mbstring.func_overload flag
 	 *
@@ -381,6 +449,11 @@ class CI_Email {
 	 */
 	protected static $func_overload;
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	// --------------------------------------------------------------------
 
 	/**
@@ -394,10 +467,31 @@ class CI_Email {
 	public function __construct(array $config = array())
 	{
 		$this->charset = config_item('charset');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->initialize($config);
 		$this->_safe_mode = ( ! is_php('5.4') && ini_get('safe_mode'));
 
 		isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+<<<<<<< HEAD
+=======
+=======
+
+		if (count($config) > 0)
+		{
+			$this->initialize($config);
+		}
+		else
+		{
+			$this->_smtp_auth = ! ($this->smtp_user === '' && $this->smtp_pass === '');
+		}
+
+		$this->_safe_mode = ( ! is_php('5.4') && ini_get('safe_mode'));
+		$this->charset = strtoupper($this->charset);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		log_message('info', 'Email Class Initialized');
 	}
@@ -405,6 +499,10 @@ class CI_Email {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Initialize preferences
 	 *
 	 * @param	array	$config
@@ -414,6 +512,33 @@ class CI_Email {
 	{
 		$this->clear();
 
+<<<<<<< HEAD
+=======
+=======
+	 * Destructor - Releases Resources
+	 *
+	 * @return	void
+	 */
+	public function __destruct()
+	{
+		if (is_resource($this->_smtp_connect))
+		{
+			$this->_send_command('quit');
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Initialize preferences
+	 *
+	 * @param	array
+	 * @return	CI_Email
+	 */
+	public function initialize($config = array())
+	{
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		foreach ($config as $key => $val)
 		{
 			if (isset($this->$key))
@@ -430,9 +555,21 @@ class CI_Email {
 				}
 			}
 		}
+<<<<<<< HEAD
 
 		$this->charset = strtoupper($this->charset);
 		$this->_smtp_auth = isset($this->smtp_user[0], $this->smtp_pass[0]);
+=======
+<<<<<<< HEAD
+
+		$this->charset = strtoupper($this->charset);
+		$this->_smtp_auth = isset($this->smtp_user[0], $this->smtp_pass[0]);
+=======
+		$this->clear();
+
+		$this->_smtp_auth = ! ($this->smtp_user === '' && $this->smtp_pass === '');
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		return $this;
 	}
@@ -458,6 +595,13 @@ class CI_Email {
 		$this->_headers		= array();
 		$this->_debug_msg	= array();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		$this->set_header('User-Agent', $this->useragent);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->set_header('Date', $this->_set_date());
 
 		if ($clear_attachments !== FALSE)
@@ -538,6 +682,10 @@ class CI_Email {
 			$this->validate_email($this->_str_to_array($replyto));
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ($name !== '')
 		{
 			// only use Q encoding if there are characters that would require it
@@ -550,6 +698,19 @@ class CI_Email {
 			{
 				$name = $this->_prep_q_encoding($name);
 			}
+<<<<<<< HEAD
+=======
+=======
+		if ($name === '')
+		{
+			$name = $replyto;
+		}
+
+		if (strpos($name, '"') !== 0)
+		{
+			$name = '"'.$name.'"';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		$this->set_header('Reply-To', $name.' <'.$replyto.'>');
@@ -730,8 +891,17 @@ class CI_Email {
 			'name'		=> array($file, $newname),
 			'disposition'	=> empty($disposition) ? 'attachment' : $disposition,  // Can also be 'inline'  Not sure if it matters
 			'type'		=> $mime,
+<<<<<<< HEAD
 			'content'	=> chunk_split(base64_encode($file_content)),
 			'multipart'	=> 'mixed'
+=======
+<<<<<<< HEAD
+			'content'	=> chunk_split(base64_encode($file_content)),
+			'multipart'	=> 'mixed'
+=======
+			'content'	=> chunk_split(base64_encode($file_content))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		);
 
 		return $this;
@@ -749,11 +919,29 @@ class CI_Email {
 	 */
 	public function attachment_cid($filename)
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		if ($this->multipart !== 'related')
+		{
+			$this->multipart = 'related'; // Thunderbird need this for inline images
+		}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		for ($i = 0, $c = count($this->_attachments); $i < $c; $i++)
 		{
 			if ($this->_attachments[$i]['name'][0] === $filename)
 			{
+<<<<<<< HEAD
 				$this->_attachments[$i]['multipart'] = 'related';
+=======
+<<<<<<< HEAD
+				$this->_attachments[$i]['multipart'] = 'related';
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				$this->_attachments[$i]['cid'] = uniqid(basename($this->_attachments[$i]['name'][0]).'@');
 				return $this->_attachments[$i]['cid'];
 			}
@@ -769,12 +957,27 @@ class CI_Email {
 	 *
 	 * @param	string
 	 * @param	string
+<<<<<<< HEAD
 	 * @return	CI_Email
+=======
+<<<<<<< HEAD
+	 * @return	CI_Email
+=======
+	 * @return	void
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	public function set_header($header, $value)
 	{
 		$this->_headers[$header] = str_replace(array("\n", "\r"), '', $value);
+<<<<<<< HEAD
 		return $this;
+=======
+<<<<<<< HEAD
+		return $this;
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -898,6 +1101,25 @@ class CI_Email {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	 * Set Message Boundary
+	 *
+	 * @return	void
+	 */
+	protected function _set_boundaries()
+	{
+		$this->_alt_boundary = 'B_ALT_'.uniqid(''); // multipart/alternative
+		$this->_atc_boundary = 'B_ATC_'.uniqid(''); // attachment boundary
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Get the Message ID
 	 *
 	 * @return	string
@@ -913,6 +1135,10 @@ class CI_Email {
 	/**
 	 * Get Mail Protocol
 	 *
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	mixed
 	 */
 	protected function _get_protocol()
@@ -920,6 +1146,23 @@ class CI_Email {
 		$this->protocol = strtolower($this->protocol);
 		in_array($this->protocol, $this->_protocols, TRUE) OR $this->protocol = 'mail';
 		return $this->protocol;
+<<<<<<< HEAD
+=======
+=======
+	 * @param	bool
+	 * @return	mixed
+	 */
+	protected function _get_protocol($return = TRUE)
+	{
+		$this->protocol = strtolower($this->protocol);
+		in_array($this->protocol, $this->_protocols, TRUE) OR $this->protocol = 'mail';
+
+		if ($return === TRUE)
+		{
+			return $this->protocol;
+		}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -927,21 +1170,53 @@ class CI_Email {
 	/**
 	 * Get Mail Encoding
 	 *
+<<<<<<< HEAD
 	 * @return	string
 	 */
 	protected function _get_encoding()
+=======
+<<<<<<< HEAD
+	 * @return	string
+	 */
+	protected function _get_encoding()
+=======
+	 * @param	bool
+	 * @return	string
+	 */
+	protected function _get_encoding($return = TRUE)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	{
 		in_array($this->_encoding, $this->_bit_depths) OR $this->_encoding = '8bit';
 
 		foreach ($this->_base_charsets as $charset)
 		{
+<<<<<<< HEAD
 			if (strpos($this->charset, $charset) === 0)
+=======
+<<<<<<< HEAD
+			if (strpos($this->charset, $charset) === 0)
+=======
+			if (strpos($charset, $this->charset) === 0)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			{
 				$this->_encoding = '7bit';
 			}
 		}
 
+<<<<<<< HEAD
 		return $this->_encoding;
+=======
+<<<<<<< HEAD
+		return $this->_encoding;
+=======
+		if ($return === TRUE)
+		{
+			return $this->_encoding;
+		}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -955,9 +1230,21 @@ class CI_Email {
 	{
 		if ($this->mailtype === 'html')
 		{
+<<<<<<< HEAD
 			return empty($this->_attachments) ? 'html' : 'html-attach';
 		}
 		elseif	($this->mailtype === 'text' && ! empty($this->_attachments))
+=======
+<<<<<<< HEAD
+			return empty($this->_attachments) ? 'html' : 'html-attach';
+		}
+		elseif	($this->mailtype === 'text' && ! empty($this->_attachments))
+=======
+			return (count($this->_attachments) === 0) ? 'html' : 'html-attach';
+		}
+		elseif	($this->mailtype === 'text' && count($this->_attachments) > 0)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return 'plain-attach';
 		}
@@ -1036,7 +1323,15 @@ class CI_Email {
 	{
 		if (function_exists('idn_to_ascii') && $atpos = strpos($email, '@'))
 		{
+<<<<<<< HEAD
 			$email = self::substr($email, 0, ++$atpos).idn_to_ascii(self::substr($email, $atpos));
+=======
+<<<<<<< HEAD
+			$email = self::substr($email, 0, ++$atpos).idn_to_ascii(self::substr($email, $atpos));
+=======
+			$email = substr($email, 0, ++$atpos).idn_to_ascii(substr($email, $atpos));
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		return (bool) filter_var($email, FILTER_VALIDATE_EMAIL);
@@ -1153,7 +1448,15 @@ class CI_Email {
 		{
 			// Is the line within the allowed character count?
 			// If so we'll join it to the output and continue
+<<<<<<< HEAD
 			if (self::strlen($line) <= $charlim)
+=======
+<<<<<<< HEAD
+			if (self::strlen($line) <= $charlim)
+=======
+			if (mb_strlen($line) <= $charlim)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			{
 				$output .= $line.$this->newline;
 				continue;
@@ -1169,10 +1472,23 @@ class CI_Email {
 				}
 
 				// Trim the word down
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				$temp .= self::substr($line, 0, $charlim - 1);
 				$line = self::substr($line, $charlim - 1);
 			}
 			while (self::strlen($line) > $charlim);
+<<<<<<< HEAD
+=======
+=======
+				$temp .= mb_substr($line, 0, $charlim - 1);
+				$line = mb_substr($line, $charlim - 1);
+			}
+			while (mb_strlen($line) > $charlim);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 			// If $temp contains data it means we had to split up an over-length
 			// word into smaller chunks so we'll add it back to our current line
@@ -1201,11 +1517,24 @@ class CI_Email {
 	/**
 	 * Build final headers
 	 *
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	void
 	 */
 	protected function _build_headers()
 	{
 		$this->set_header('User-Agent', $this->useragent);
+<<<<<<< HEAD
+=======
+=======
+	 * @return	string
+	 */
+	protected function _build_headers()
+	{
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->set_header('X-Sender', $this->clean_email($this->_headers['From']));
 		$this->set_header('X-Mailer', $this->useragent);
 		$this->set_header('X-Priority', $this->_priorities[$this->priority]);
@@ -1264,6 +1593,13 @@ class CI_Email {
 			$this->_body = $this->word_wrap($this->_body);
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		$this->_set_boundaries();
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->_write_headers();
 
 		$hdr = ($this->_get_protocol() === 'mail') ? $this->newline : '';
@@ -1271,7 +1607,15 @@ class CI_Email {
 
 		switch ($this->_get_content_type())
 		{
+<<<<<<< HEAD
 			case 'plain':
+=======
+<<<<<<< HEAD
+			case 'plain':
+=======
+			case 'plain' :
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 				$hdr .= 'Content-Type: text/plain; charset='.$this->charset.$this->newline
 					.'Content-Transfer-Encoding: '.$this->_get_encoding();
@@ -1288,7 +1632,15 @@ class CI_Email {
 
 				return;
 
+<<<<<<< HEAD
 			case 'html':
+=======
+<<<<<<< HEAD
+			case 'html':
+=======
+			case 'html' :
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 				if ($this->send_multipart === FALSE)
 				{
@@ -1297,6 +1649,10 @@ class CI_Email {
 				}
 				else
 				{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 					$boundary = uniqid('B_ALT_');
 					$hdr .= 'Content-Type: multipart/alternative; boundary="'.$boundary.'"';
 
@@ -1307,6 +1663,19 @@ class CI_Email {
 						.'Content-Transfer-Encoding: '.$this->_get_encoding().$this->newline.$this->newline
 						.$this->_get_alt_message().$this->newline.$this->newline
 						.'--'.$boundary.$this->newline
+<<<<<<< HEAD
+=======
+=======
+					$hdr .= 'Content-Type: multipart/alternative; boundary="'.$this->_alt_boundary.'"';
+
+					$body .= $this->_get_mime_message().$this->newline.$this->newline
+						.'--'.$this->_alt_boundary.$this->newline
+
+						.'Content-Type: text/plain; charset='.$this->charset.$this->newline
+						.'Content-Transfer-Encoding: '.$this->_get_encoding().$this->newline.$this->newline
+						.$this->_get_alt_message().$this->newline.$this->newline.'--'.$this->_alt_boundary.$this->newline
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 						.'Content-Type: text/html; charset='.$this->charset.$this->newline
 						.'Content-Transfer-Encoding: quoted-printable'.$this->newline.$this->newline;
@@ -1325,15 +1694,35 @@ class CI_Email {
 
 				if ($this->send_multipart !== FALSE)
 				{
+<<<<<<< HEAD
 					$this->_finalbody .= '--'.$boundary.'--';
+=======
+<<<<<<< HEAD
+					$this->_finalbody .= '--'.$boundary.'--';
+=======
+					$this->_finalbody .= '--'.$this->_alt_boundary.'--';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				}
 
 				return;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			case 'plain-attach':
 
 				$boundary = uniqid('B_ATC_');
 				$hdr .= 'Content-Type: multipart/mixed; boundary="'.$boundary.'"';
+<<<<<<< HEAD
+=======
+=======
+			case 'plain-attach' :
+
+				$hdr .= 'Content-Type: multipart/'.$this->multipart.'; boundary="'.$this->_atc_boundary.'"';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 				if ($this->_get_protocol() === 'mail')
 				{
@@ -1342,12 +1731,24 @@ class CI_Email {
 
 				$body .= $this->_get_mime_message().$this->newline
 					.$this->newline
+<<<<<<< HEAD
 					.'--'.$boundary.$this->newline
+=======
+<<<<<<< HEAD
+					.'--'.$boundary.$this->newline
+=======
+					.'--'.$this->_atc_boundary.$this->newline
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 					.'Content-Type: text/plain; charset='.$this->charset.$this->newline
 					.'Content-Transfer-Encoding: '.$this->_get_encoding().$this->newline
 					.$this->newline
 					.$this->_body.$this->newline.$this->newline;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				$this->_append_attachments($body, $boundary);
 
 				break;
@@ -1379,12 +1780,25 @@ class CI_Email {
 
 					$last_boundary = $rel_boundary;
 				}
+<<<<<<< HEAD
+=======
+=======
+			break;
+			case 'html-attach' :
+
+				$hdr .= 'Content-Type: multipart/'.$this->multipart.'; boundary="'.$this->_atc_boundary.'"';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 				if ($this->_get_protocol() === 'mail')
 				{
 					$this->_header_str .= $hdr;
 				}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				self::strlen($body) && $body .= $this->newline.$this->newline;
 				$body .= $this->_get_mime_message().$this->newline.$this->newline
 					.'--'.$last_boundary.$this->newline
@@ -1396,11 +1810,29 @@ class CI_Email {
 					.'Content-Transfer-Encoding: '.$this->_get_encoding().$this->newline.$this->newline
 					.$this->_get_alt_message().$this->newline.$this->newline
 					.'--'.$alt_boundary.$this->newline
+<<<<<<< HEAD
+=======
+=======
+				$body .= $this->_get_mime_message().$this->newline.$this->newline
+					.'--'.$this->_atc_boundary.$this->newline
+
+					.'Content-Type: multipart/alternative; boundary="'.$this->_alt_boundary.'"'.$this->newline.$this->newline
+					.'--'.$this->_alt_boundary.$this->newline
+
+					.'Content-Type: text/plain; charset='.$this->charset.$this->newline
+					.'Content-Transfer-Encoding: '.$this->_get_encoding().$this->newline.$this->newline
+					.$this->_get_alt_message().$this->newline.$this->newline.'--'.$this->_alt_boundary.$this->newline
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 					.'Content-Type: text/html; charset='.$this->charset.$this->newline
 					.'Content-Transfer-Encoding: quoted-printable'.$this->newline.$this->newline
 
 					.$this->_prep_quoted_printable($this->_body).$this->newline.$this->newline
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 					.'--'.$alt_boundary.'--'.$this->newline.$this->newline;
 
 				if ( ! empty($rel_boundary))
@@ -1419,6 +1851,34 @@ class CI_Email {
 				break;
 		}
 
+<<<<<<< HEAD
+=======
+=======
+					.'--'.$this->_alt_boundary.'--'.$this->newline.$this->newline;
+
+			break;
+		}
+
+		$attachment = array();
+		for ($i = 0, $c = count($this->_attachments), $z = 0; $i < $c; $i++)
+		{
+			$filename = $this->_attachments[$i]['name'][0];
+			$basename = ($this->_attachments[$i]['name'][1] === NULL)
+				? basename($filename) : $this->_attachments[$i]['name'][1];
+
+			$attachment[$z++] = '--'.$this->_atc_boundary.$this->newline
+				.'Content-type: '.$this->_attachments[$i]['type'].'; '
+				.'name="'.$basename.'"'.$this->newline
+				.'Content-Disposition: '.$this->_attachments[$i]['disposition'].';'.$this->newline
+				.'Content-Transfer-Encoding: base64'.$this->newline
+				.(empty($this->_attachments[$i]['cid']) ? '' : 'Content-ID: <'.$this->_attachments[$i]['cid'].'>'.$this->newline);
+
+			$attachment[$z++] = $this->_attachments[$i]['content'];
+		}
+
+		$body .= implode($this->newline, $attachment).$this->newline.'--'.$this->_atc_boundary.'--';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->_finalbody = ($this->_get_protocol() === 'mail')
 			? $body
 			: $hdr.$this->newline.$this->newline.$body;
@@ -1428,6 +1888,10 @@ class CI_Email {
 
 	// --------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	protected function _attachments_have_multipart($type)
 	{
 		foreach ($this->_attachments as &$attachment)
@@ -1480,6 +1944,11 @@ class CI_Email {
 
 	// --------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	/**
 	 * Prep Quoted Printable
 	 *
@@ -1491,6 +1960,10 @@ class CI_Email {
 	 */
 	protected function _prep_quoted_printable($str)
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// ASCII code numbers for "safe" characters that can always be
 		// used literally, without encoding, as described in RFC 2049.
 		// http://www.ietf.org/rfc/rfc2049.txt
@@ -1505,6 +1978,11 @@ class CI_Email {
 			97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122
 		);
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// We are intentionally wrapping so mail servers will encode characters
 		// properly and MUAs will behave, so {unwrap} must go!
 		$str = str_replace(array('{unwrap}', '{/unwrap}'), '', $str);
@@ -1515,7 +1993,22 @@ class CI_Email {
 		// which only works with "\n".
 		if ($this->crlf === "\r\n")
 		{
+<<<<<<< HEAD
 			return quoted_printable_encode($str);
+=======
+<<<<<<< HEAD
+			return quoted_printable_encode($str);
+=======
+			if (is_php('5.3'))
+			{
+				return quoted_printable_encode($str);
+			}
+			elseif (function_exists('imap_8bit'))
+			{
+				return imap_8bit($str);
+			}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		// Reduce multiple spaces & remove nulls
@@ -1532,7 +2025,15 @@ class CI_Email {
 
 		foreach (explode("\n", $str) as $line)
 		{
+<<<<<<< HEAD
 			$length = self::strlen($line);
+=======
+<<<<<<< HEAD
+			$length = self::strlen($line);
+=======
+			$length = strlen($line);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			$temp = '';
 
 			// Loop through each character in the line to add soft-wrap
@@ -1545,6 +2046,10 @@ class CI_Email {
 				$ascii = ord($char);
 
 				// Convert spaces and tabs but only if it's the end of the line
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				if ($ascii === 32 OR $ascii === 9)
 				{
 					if ($i === ($length - 1))
@@ -1568,6 +2073,23 @@ class CI_Email {
 				// If we're at the character limit, add the line to the output,
 				// reset our temp variable, and keep on chuggin'
 				if ((self::strlen($temp) + self::strlen($char)) >= 76)
+<<<<<<< HEAD
+=======
+=======
+				if ($i === ($length - 1) && ($ascii === 32 OR $ascii === 9))
+				{
+					$char = $escape.sprintf('%02s', dechex($ascii));
+				}
+				elseif ($ascii === 61) // encode = signs
+				{
+					$char = $escape.strtoupper(sprintf('%02s', dechex($ascii)));  // =3D
+				}
+
+				// If we're at the character limit, add the line to the output,
+				// reset our temp variable, and keep on chuggin'
+				if ((strlen($temp) + strlen($char)) >= 76)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				{
 					$output .= $temp.$escape.$this->crlf;
 					$temp = '';
@@ -1582,7 +2104,15 @@ class CI_Email {
 		}
 
 		// get rid of extra CRLF tacked onto the end
+<<<<<<< HEAD
 		return self::substr($output, 0, self::strlen($this->crlf) * -1);
+=======
+<<<<<<< HEAD
+		return self::substr($output, 0, self::strlen($this->crlf) * -1);
+=======
+		return substr($output, 0, strlen($this->crlf) * -1);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -1603,10 +2133,24 @@ class CI_Email {
 
 		if ($this->charset === 'UTF-8')
 		{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			// Note: We used to have mb_encode_mimeheader() as the first choice
 			//       here, but it turned out to be buggy and unreliable. DO NOT
 			//       re-add it! -- Narf
 			if (ICONV_ENABLED === TRUE)
+<<<<<<< HEAD
+=======
+=======
+			if (MB_ENABLED === TRUE)
+			{
+				return mb_encode_mimeheader($str, $this->charset, 'Q', $this->crlf);
+			}
+			elseif (ICONV_ENABLED === TRUE)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			{
 				$output = @iconv_mime_encode('', $str,
 					array(
@@ -1624,11 +2168,23 @@ class CI_Email {
 					// iconv_mime_encode() will always put a header field name.
 					// We've passed it an empty one, but it still prepends our
 					// encoded string with ': ', so we need to strip it.
+<<<<<<< HEAD
 					return self::substr($output, 2);
+=======
+<<<<<<< HEAD
+					return self::substr($output, 2);
+=======
+					return substr($output, 2);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				}
 
 				$chars = iconv_strlen($str, 'UTF-8');
 			}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			elseif (MB_ENABLED === TRUE)
 			{
 				$chars = mb_strlen($str, 'UTF-8');
@@ -1640,6 +2196,18 @@ class CI_Email {
 
 		$output = '=?'.$this->charset.'?Q?';
 		for ($i = 0, $length = self::strlen($output); $i < $chars; $i++)
+<<<<<<< HEAD
+=======
+=======
+		}
+
+		// We might already have this set for UTF-8
+		isset($chars) OR $chars = strlen($str);
+
+		$output = '=?'.$this->charset.'?Q?';
+		for ($i = 0, $length = strlen($output); $i < $chars; $i++)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			$chr = ($this->charset === 'UTF-8' && ICONV_ENABLED === TRUE)
 				? '='.implode('=', str_split(strtoupper(bin2hex(iconv_substr($str, $i, 1, $this->charset))), 2))
@@ -1647,11 +2215,25 @@ class CI_Email {
 
 			// RFC 2045 sets a limit of 76 characters per line.
 			// We'll append ?= to the end of each line though.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			if ($length + ($l = self::strlen($chr)) > 74)
 			{
 				$output .= '?='.$this->crlf // EOL
 					.' =?'.$this->charset.'?Q?'.$chr; // New line
 				$length = 6 + self::strlen($this->charset) + $l; // Reset the length for the new line
+<<<<<<< HEAD
+=======
+=======
+			if ($length + ($l = strlen($chr)) > 74)
+			{
+				$output .= '?='.$this->crlf // EOL
+					.' =?'.$this->charset.'?Q?'.$chr; // New line
+				$length = 6 + strlen($this->charset) + $l; // Reset the length for the new line
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			}
 			else
 			{
@@ -1744,14 +2326,30 @@ class CI_Email {
 
 			if ($i === $float)
 			{
+<<<<<<< HEAD
 				$chunk[] = self::substr($set, 1);
+=======
+<<<<<<< HEAD
+				$chunk[] = self::substr($set, 1);
+=======
+				$chunk[] = substr($set, 1);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				$float += $this->bcc_batch_size;
 				$set = '';
 			}
 
 			if ($i === $c-1)
 			{
+<<<<<<< HEAD
 				$chunk[] = self::substr($set, 1);
+=======
+<<<<<<< HEAD
+				$chunk[] = self::substr($set, 1);
+=======
+				$chunk[] = substr($set, 1);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			}
 		}
 
@@ -1820,6 +2418,10 @@ class CI_Email {
 	{
 		$this->_unwrap_specials();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$protocol = $this->_get_protocol();
 		$method   = '_send_with_'.$protocol;
 		if ( ! $this->$method())
@@ -1829,12 +2431,29 @@ class CI_Email {
 		}
 
 		$this->_set_error_message('lang:email_sent', $protocol);
+<<<<<<< HEAD
+=======
+=======
+		$method = '_send_with_'.$this->_get_protocol();
+		if ( ! $this->$method())
+		{
+			$this->_set_error_message('lang:email_send_failure_'.($this->_get_protocol() === 'mail' ? 'phpmail' : $this->_get_protocol()));
+			return FALSE;
+		}
+
+		$this->_set_error_message('lang:email_sent', $this->_get_protocol());
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return TRUE;
 	}
 
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Validate email for shell
 	 *
 	 * Applies stricter, shell-safe validation to email addresses.
@@ -1862,6 +2481,11 @@ class CI_Email {
 	// --------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Send using mail()
 	 *
 	 * @return	bool
@@ -1873,11 +2497,21 @@ class CI_Email {
 			$this->_recipients = implode(', ', $this->_recipients);
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// _validate_email_for_shell() below accepts by reference,
 		// so this needs to be assigned to a variable
 		$from = $this->clean_email($this->_headers['Return-Path']);
 
 		if ($this->_safe_mode === TRUE || ! $this->_validate_email_for_shell($from))
+<<<<<<< HEAD
+=======
+=======
+		if ($this->_safe_mode === TRUE)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return mail($this->_recipients, $this->_subject, $this->_finalbody, $this->_header_str);
 		}
@@ -1885,7 +2519,15 @@ class CI_Email {
 		{
 			// most documentation of sendmail using the "-f" flag lacks a space after it, however
 			// we've encountered servers that seem to require it to be in place.
+<<<<<<< HEAD
 			return mail($this->_recipients, $this->_subject, $this->_finalbody, $this->_header_str, '-f '.$from);
+=======
+<<<<<<< HEAD
+			return mail($this->_recipients, $this->_subject, $this->_finalbody, $this->_header_str, '-f '.$from);
+=======
+			return mail($this->_recipients, $this->_subject, $this->_finalbody, $this->_header_str, '-f '.$this->clean_email($this->_headers['Return-Path']));
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 	}
 
@@ -1898,6 +2540,10 @@ class CI_Email {
 	 */
 	protected function _send_with_sendmail()
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// _validate_email_for_shell() below accepts by reference,
 		// so this needs to be assigned to a variable
 		$from = $this->clean_email($this->_headers['From']);
@@ -1914,6 +2560,19 @@ class CI_Email {
 		if ( ! function_usable('popen')	OR FALSE === ($fp = @popen($this->mailpath.' -oi '.$from.' -t', 'w')))
 		{
 			// server probably has popen disabled, so nothing we can do to get a verbose error.
+<<<<<<< HEAD
+=======
+=======
+		// is popen() enabled?
+		if ( ! function_usable('popen')
+			OR FALSE === ($fp = @popen(
+						$this->mailpath.' -oi -f '.$this->clean_email($this->_headers['From'])
+							.' -t -r '.$this->clean_email($this->_headers['Return-Path'])
+						, 'w'))
+		) // server probably has popen disabled, so nothing we can do to get a verbose error.
+		{
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			return FALSE;
 		}
 
@@ -1952,6 +2611,10 @@ class CI_Email {
 			return FALSE;
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ( ! $this->_send_command('from', $this->clean_email($this->_headers['From'])))
 		{
 			$this->_smtp_end();
@@ -1965,16 +2628,38 @@ class CI_Email {
 				$this->_smtp_end();
 				return FALSE;
 			}
+<<<<<<< HEAD
+=======
+=======
+		$this->_send_command('from', $this->clean_email($this->_headers['From']));
+
+		foreach ($this->_recipients as $val)
+		{
+			$this->_send_command('to', $val);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		if (count($this->_cc_array) > 0)
 		{
 			foreach ($this->_cc_array as $val)
 			{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				if ($val !== '' && ! $this->_send_command('to', $val))
 				{
 					$this->_smtp_end();
 					return FALSE;
+<<<<<<< HEAD
+=======
+=======
+				if ($val !== '')
+				{
+					$this->_send_command('to', $val);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				}
 			}
 		}
@@ -1983,19 +2668,41 @@ class CI_Email {
 		{
 			foreach ($this->_bcc_array as $val)
 			{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				if ($val !== '' && ! $this->_send_command('to', $val))
 				{
 					$this->_smtp_end();
 					return FALSE;
+<<<<<<< HEAD
+=======
+=======
+				if ($val !== '')
+				{
+					$this->_send_command('to', $val);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				}
 			}
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ( ! $this->_send_command('data'))
 		{
 			$this->_smtp_end();
 			return FALSE;
 		}
+<<<<<<< HEAD
+=======
+=======
+		$this->_send_command('data');
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		// perform dot transformation on any lines that begin with a dot
 		$this->_send_data($this->_header_str.preg_replace('/^\./m', '..$1', $this->_finalbody));
@@ -2003,9 +2710,20 @@ class CI_Email {
 		$this->_send_data('.');
 
 		$reply = $this->_get_smtp_data();
+<<<<<<< HEAD
 		$this->_set_error_message($reply);
 
 		$this->_smtp_end();
+=======
+<<<<<<< HEAD
+		$this->_set_error_message($reply);
+
+		$this->_smtp_end();
+=======
+
+		$this->_set_error_message($reply);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		if (strpos($reply, '250') !== 0)
 		{
@@ -2013,6 +2731,10 @@ class CI_Email {
 			return FALSE;
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return TRUE;
 	}
 
@@ -2030,6 +2752,21 @@ class CI_Email {
 		($this->smtp_keepalive)
 			? $this->_send_command('reset')
 			: $this->_send_command('quit');
+<<<<<<< HEAD
+=======
+=======
+		if ($this->smtp_keepalive)
+		{
+			$this->_send_command('reset');
+		}
+		else
+		{
+			$this->_send_command('quit');
+		}
+
+		return TRUE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// --------------------------------------------------------------------
@@ -2087,7 +2824,15 @@ class CI_Email {
 	 *
 	 * @param	string
 	 * @param	string
+<<<<<<< HEAD
 	 * @return	bool
+=======
+<<<<<<< HEAD
+	 * @return	bool
+=======
+	 * @return	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	protected function _send_command($cmd, $data = '')
 	{
@@ -2150,7 +2895,15 @@ class CI_Email {
 
 		$this->_debug_msg[] = '<pre>'.$cmd.': '.$reply.'</pre>';
 
+<<<<<<< HEAD
 		if ((int) self::substr($reply, 0, 3) !== $resp)
+=======
+<<<<<<< HEAD
+		if ((int) self::substr($reply, 0, 3) !== $resp)
+=======
+		if ((int) substr($reply, 0, 3) !== $resp)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			$this->_set_error_message('lang:email_smtp_error', $reply);
 			return FALSE;
@@ -2218,11 +2971,20 @@ class CI_Email {
 			return FALSE;
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if ($this->smtp_keepalive)
 		{
 			$this->_smtp_auth = FALSE;
 		}
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return TRUE;
 	}
 
@@ -2237,6 +2999,10 @@ class CI_Email {
 	protected function _send_data($data)
 	{
 		$data .= $this->newline;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		for ($written = $timestamp = 0, $length = self::strlen($data); $written < $length; $written += $result)
 		{
 			if (($result = fwrite($this->_smtp_connect, self::substr($data, $written))) === FALSE)
@@ -2263,6 +3029,17 @@ class CI_Email {
 			{
 				$timestamp = 0;
 			}
+<<<<<<< HEAD
+=======
+=======
+		for ($written = 0, $length = strlen($data); $written < $length; $written += $result)
+		{
+			if (($result = fwrite($this->_smtp_connect, substr($data, $written))) === FALSE)
+			{
+				break;
+			}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		if ($result === FALSE)
@@ -2412,6 +3189,10 @@ class CI_Email {
 		return 'application/x-unknown-content-type';
 	}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	// --------------------------------------------------------------------
 
 	/**
@@ -2463,4 +3244,9 @@ class CI_Email {
 			? substr($str, $start, $length)
 			: substr($str, $start);
 	}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 }

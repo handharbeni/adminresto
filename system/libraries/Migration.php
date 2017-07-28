@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 3.0.0
  * @filesource
  */
@@ -96,9 +117,21 @@ class CI_Migration {
 	/**
 	 * Migration basename regex
 	 *
+<<<<<<< HEAD
 	 * @var string
 	 */
 	protected $_migration_regex;
+=======
+<<<<<<< HEAD
+	 * @var string
+	 */
+	protected $_migration_regex;
+=======
+	 * @var bool
+	 */
+	protected $_migration_regex = NULL;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * Error message
@@ -191,7 +224,15 @@ class CI_Migration {
 	 * choice
 	 *
 	 * @param	string	$target_version	Target schema version
+<<<<<<< HEAD
 	 * @return	mixed	TRUE if no migrations are found, current version string on success, FALSE on failure
+=======
+<<<<<<< HEAD
+	 * @return	mixed	TRUE if no migrations are found, current version string on success, FALSE on failure
+=======
+	 * @return	mixed	TRUE if already latest, FALSE if failed, string if upgraded
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	public function version($target_version)
 	{
@@ -217,6 +258,10 @@ class CI_Migration {
 
 		if ($target_version > $current_version)
 		{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			$method = 'up';
 		}
 		elseif ($target_version < $current_version)
@@ -277,6 +322,36 @@ class CI_Migration {
 				}
 
 				$previous = $number;
+<<<<<<< HEAD
+=======
+=======
+			// Moving Up
+			$method = 'up';
+		}
+		else
+		{
+			// Moving Down, apply in reverse order
+			$method = 'down';
+			krsort($migrations);
+		}
+
+		if (empty($migrations))
+		{
+			return TRUE;
+		}
+
+		$previous = FALSE;
+
+		// Validate all available migrations, and run the ones within our target range
+		foreach ($migrations as $number => $file)
+		{
+			// Check for sequence gaps
+			if ($this->_migration_type === 'sequential' && $previous !== FALSE && abs($number - $previous) > 1)
+			{
+				$this->_error_string = sprintf($this->lang->line('migration_sequence_gap'), $number);
+				return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			}
 
 			include_once($file);
@@ -288,6 +363,10 @@ class CI_Migration {
 				$this->_error_string = sprintf($this->lang->line('migration_class_doesnt_exist'), $class);
 				return FALSE;
 			}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			elseif ( ! is_callable(array($class, $method)))
 			{
 				$this->_error_string = sprintf($this->lang->line('migration_missing_'.$method.'_method'), $class);
@@ -306,6 +385,32 @@ class CI_Migration {
 			call_user_func($migration);
 			$current_version = $number;
 			$this->_update_version($current_version);
+<<<<<<< HEAD
+=======
+=======
+
+			$previous = $number;
+
+			// Run migrations that are inside the target range
+			if (
+				($method === 'up'   && $number > $current_version && $number <= $target_version) OR
+				($method === 'down' && $number <= $current_version && $number > $target_version)
+			)
+			{
+				$instance = new $class();
+				if ( ! is_callable(array($instance, $method)))
+				{
+					$this->_error_string = sprintf($this->lang->line('migration_missing_'.$method.'_method'), $class);
+					return FALSE;
+				}
+
+				log_message('debug', 'Migrating '.$method.' from version '.$current_version.' to version '.$number);
+				call_user_func(array($instance, $method));
+				$current_version = $number;
+				$this->_update_version($current_version);
+			}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		// This is necessary when moving down, since the the last migration applied
@@ -317,6 +422,13 @@ class CI_Migration {
 		}
 
 		log_message('debug', 'Finished migrating to '.$current_version);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return $current_version;
 	}
 
@@ -325,7 +437,15 @@ class CI_Migration {
 	/**
 	 * Sets the schema to the latest migration
 	 *
+<<<<<<< HEAD
 	 * @return	mixed	Current version string on success, FALSE on failure
+=======
+<<<<<<< HEAD
+	 * @return	mixed	Current version string on success, FALSE on failure
+=======
+	 * @return	mixed	TRUE if already latest, FALSE if failed, string if upgraded
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	public function latest()
 	{
@@ -349,7 +469,15 @@ class CI_Migration {
 	/**
 	 * Sets the schema to the migration version set in config
 	 *
+<<<<<<< HEAD
 	 * @return	mixed	TRUE if no migrations are found, current version string on success, FALSE on failure
+=======
+<<<<<<< HEAD
+	 * @return	mixed	TRUE if no migrations are found, current version string on success, FALSE on failure
+=======
+	 * @return	mixed	TRUE if already current, FALSE if failed, string if upgraded
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	public function current()
 	{

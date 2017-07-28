@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.0.0
  * @filesource
  */
@@ -44,7 +65,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Helpers
  * @category	Helpers
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/helpers/form_helper.html
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/helpers/form_helper.html
+=======
+ * @link		http://codeigniter.com/user_guide/helpers/form_helper.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 
 // ------------------------------------------------------------------------
@@ -90,6 +119,10 @@ if ( ! function_exists('form_open'))
 
 		$form = '<form action="'.$action.'"'.$attributes.">\n";
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if (is_array($hidden))
 		{
 			foreach ($hidden as $name => $value)
@@ -131,6 +164,23 @@ if ( ! function_exists('form_open'))
 				$append,
 				"\n"
 			);
+<<<<<<< HEAD
+=======
+=======
+		// Add CSRF field if enabled, but leave it out for GET requests and requests to external websites
+		if ($CI->config->item('csrf_protection') === TRUE && strpos($action, $CI->config->base_url()) !== FALSE && ! stripos($form, 'method="get"'))
+		{
+			$hidden[$CI->security->get_csrf_token_name()] = $CI->security->get_csrf_hash();
+		}
+
+		if (is_array($hidden))
+		{
+			foreach ($hidden as $name => $value)
+			{
+				$form .= '<input type="hidden" name="'.$name.'" value="'.html_escape($value).'" style="display:none;" />'."\n";
+			}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		return $form;
@@ -226,7 +276,15 @@ if ( ! function_exists('form_input'))
 	 *
 	 * @param	mixed
 	 * @param	string
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_input($data = '', $value = '', $extra = '')
@@ -237,7 +295,15 @@ if ( ! function_exists('form_input'))
 			'value' => $value
 		);
 
+<<<<<<< HEAD
 		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+<<<<<<< HEAD
+		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+		return '<input '._parse_form_attributes($data, $defaults).$extra." />\n";
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -252,7 +318,15 @@ if ( ! function_exists('form_password'))
 	 *
 	 * @param	mixed
 	 * @param	string
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_password($data = '', $value = '', $extra = '')
@@ -274,7 +348,15 @@ if ( ! function_exists('form_upload'))
 	 *
 	 * @param	mixed
 	 * @param	string
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_upload($data = '', $value = '', $extra = '')
@@ -282,8 +364,17 @@ if ( ! function_exists('form_upload'))
 		$defaults = array('type' => 'file', 'name' => '');
 		is_array($data) OR $data = array('name' => $data);
 		$data['type'] = 'file';
+<<<<<<< HEAD
 
 		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+<<<<<<< HEAD
+
+		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+		return '<input '._parse_form_attributes($data, $defaults).$extra." />\n";
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -296,7 +387,15 @@ if ( ! function_exists('form_textarea'))
 	 *
 	 * @param	mixed	$data
 	 * @param	string	$value
+<<<<<<< HEAD
 	 * @param	mixed	$extra
+=======
+<<<<<<< HEAD
+	 * @param	mixed	$extra
+=======
+	 * @param	string	$extra
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_textarea($data = '', $value = '', $extra = '')
@@ -317,9 +416,19 @@ if ( ! function_exists('form_textarea'))
 			unset($data['value']); // textareas don't use the value attribute
 		}
 
+<<<<<<< HEAD
 		return '<textarea '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'
 			.html_escape($val)
 			."</textarea>\n";
+=======
+<<<<<<< HEAD
+		return '<textarea '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'
+			.html_escape($val)
+			."</textarea>\n";
+=======
+		return '<textarea '._parse_form_attributes($data, $defaults).$extra.'>'.html_escape($val)."</textarea>\n";
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -333,13 +442,30 @@ if ( ! function_exists('form_multiselect'))
 	 * @param	string
 	 * @param	array
 	 * @param	mixed
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_multiselect($name = '', $options = array(), $selected = array(), $extra = '')
 	{
+<<<<<<< HEAD
 		$extra = _attributes_to_string($extra);
 		if (stripos($extra, 'multiple') === FALSE)
+=======
+<<<<<<< HEAD
+		$extra = _attributes_to_string($extra);
+		if (stripos($extra, 'multiple') === FALSE)
+=======
+		if ( ! strpos($extra, 'multiple'))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			$extra .= ' multiple="multiple"';
 		}
@@ -405,7 +531,15 @@ if ( ! function_exists('form_dropdown'))
 
 		$extra = _attributes_to_string($extra);
 
+<<<<<<< HEAD
 		$multiple = (count($selected) > 1 && stripos($extra, 'multiple') === FALSE) ? ' multiple="multiple"' : '';
+=======
+<<<<<<< HEAD
+		$multiple = (count($selected) > 1 && stripos($extra, 'multiple') === FALSE) ? ' multiple="multiple"' : '';
+=======
+		$multiple = (count($selected) > 1 && strpos($extra, 'multiple') === FALSE) ? ' multiple="multiple"' : '';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		$form = '<select '.rtrim(_parse_form_attributes($data, $defaults)).$extra.$multiple.">\n";
 
@@ -453,7 +587,15 @@ if ( ! function_exists('form_checkbox'))
 	 * @param	mixed
 	 * @param	string
 	 * @param	bool
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_checkbox($data = '', $value = '', $checked = FALSE, $extra = '')
@@ -483,7 +625,15 @@ if ( ! function_exists('form_checkbox'))
 			unset($defaults['checked']);
 		}
 
+<<<<<<< HEAD
 		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+<<<<<<< HEAD
+		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+		return '<input '._parse_form_attributes($data, $defaults).$extra." />\n";
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -497,14 +647,29 @@ if ( ! function_exists('form_radio'))
 	 * @param	mixed
 	 * @param	string
 	 * @param	bool
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_radio($data = '', $value = '', $checked = FALSE, $extra = '')
 	{
 		is_array($data) OR $data = array('name' => $data);
 		$data['type'] = 'radio';
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		return form_checkbox($data, $value, $checked, $extra);
 	}
 }
@@ -518,7 +683,15 @@ if ( ! function_exists('form_submit'))
 	 *
 	 * @param	mixed
 	 * @param	string
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_submit($data = '', $value = '', $extra = '')
@@ -529,7 +702,15 @@ if ( ! function_exists('form_submit'))
 			'value' => $value
 		);
 
+<<<<<<< HEAD
 		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+<<<<<<< HEAD
+		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+		return '<input '._parse_form_attributes($data, $defaults).$extra." />\n";
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -542,7 +723,15 @@ if ( ! function_exists('form_reset'))
 	 *
 	 * @param	mixed
 	 * @param	string
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_reset($data = '', $value = '', $extra = '')
@@ -553,7 +742,15 @@ if ( ! function_exists('form_reset'))
 			'value' => $value
 		);
 
+<<<<<<< HEAD
 		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+<<<<<<< HEAD
+		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
+=======
+		return '<input '._parse_form_attributes($data, $defaults).$extra." />\n";
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -566,7 +763,15 @@ if ( ! function_exists('form_button'))
 	 *
 	 * @param	mixed
 	 * @param	string
+<<<<<<< HEAD
 	 * @param	mixed
+=======
+<<<<<<< HEAD
+	 * @param	mixed
+=======
+	 * @param	string
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_button($data = '', $content = '', $extra = '')
@@ -582,9 +787,19 @@ if ( ! function_exists('form_button'))
 			unset($data['content']); // content is not an attribute
 		}
 
+<<<<<<< HEAD
 		return '<button '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'
 			.$content
 			."</button>\n";
+=======
+<<<<<<< HEAD
+		return '<button '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'
+			.$content
+			."</button>\n";
+=======
+		return '<button '._parse_form_attributes($data, $defaults).$extra.'>'.$content."</button>\n";
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -597,7 +812,15 @@ if ( ! function_exists('form_label'))
 	 *
 	 * @param	string	The text to appear onscreen
 	 * @param	string	The id the label applies to
+<<<<<<< HEAD
 	 * @param	mixed	Additional attributes
+=======
+<<<<<<< HEAD
+	 * @param	mixed	Additional attributes
+=======
+	 * @param	string	Additional attributes
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	string
 	 */
 	function form_label($label_text = '', $id = '', $attributes = array())
@@ -610,7 +833,21 @@ if ( ! function_exists('form_label'))
 			$label .= ' for="'.$id.'"';
 		}
 
+<<<<<<< HEAD
 		$label .= _attributes_to_string($attributes);
+=======
+<<<<<<< HEAD
+		$label .= _attributes_to_string($attributes);
+=======
+		if (is_array($attributes) && count($attributes) > 0)
+		{
+			foreach ($attributes as $key => $val)
+			{
+				$label .= ' '.$key.'="'.$val.'"';
+			}
+		}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		return $label.'>'.$label_text.'</label>';
 	}
@@ -792,11 +1029,26 @@ if ( ! function_exists('set_checkbox'))
 		{
 			return $CI->form_validation->set_checkbox($field, $value, $default);
 		}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		// Form inputs are always strings ...
 		$value = (string) $value;
 		$input = $CI->input->post($field, FALSE);
 
+<<<<<<< HEAD
+=======
+=======
+		elseif (($input = $CI->input->post($field, FALSE)) === NULL)
+		{
+			return ($default === TRUE) ? ' checked="checked"' : '';
+		}
+
+		$value = (string) $value;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		if (is_array($input))
 		{
 			// Note: in_array('', array(0)) returns TRUE, do not use it
@@ -811,6 +1063,10 @@ if ( ! function_exists('set_checkbox'))
 			return '';
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// Unchecked checkbox and radio inputs are not even submitted by browsers ...
 		if ($CI->input->method() === 'post')
 		{
@@ -818,6 +1074,12 @@ if ( ! function_exists('set_checkbox'))
 		}
 
 		return ($default === TRUE) ? ' checked="checked"' : '';
+<<<<<<< HEAD
+=======
+=======
+		return ($input === $value) ? ' checked="checked"' : '';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 
@@ -844,6 +1106,10 @@ if ( ! function_exists('set_radio'))
 		{
 			return $CI->form_validation->set_radio($field, $value, $default);
 		}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		// Form inputs are always strings ...
 		$value = (string) $value;
@@ -870,6 +1136,17 @@ if ( ! function_exists('set_radio'))
 		}
 
 		return ($default === TRUE) ? ' checked="checked"' : '';
+<<<<<<< HEAD
+=======
+=======
+		elseif (($input = $CI->input->post($field, FALSE)) === NULL)
+		{
+			return ($default === TRUE) ? ' checked="checked"' : '';
+		}
+
+		return ($input === (string) $value) ? ' checked="checked"' : '';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 }
 

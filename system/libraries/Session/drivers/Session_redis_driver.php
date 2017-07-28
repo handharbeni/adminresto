@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 3.0.0
  * @filesource
  */
@@ -44,14 +65,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Sessions
  * @author	Andrey Andreev
+<<<<<<< HEAD
  * @link	https://codeigniter.com/user_guide/libraries/sessions.html
+=======
+<<<<<<< HEAD
+ * @link	https://codeigniter.com/user_guide/libraries/sessions.html
+=======
+ * @link	http://codeigniter.com/user_guide/libraries/sessions.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_Session_redis_driver extends CI_Session_driver implements SessionHandlerInterface {
 
 	/**
 	 * phpRedis instance
 	 *
+<<<<<<< HEAD
 	 * @var	Redis
+=======
+<<<<<<< HEAD
+	 * @var	Redis
+=======
+	 * @var	resource
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 */
 	protected $_redis;
 
@@ -69,6 +106,10 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 	 */
 	protected $_lock_key;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	/**
 	 * Key exists flag
 	 *
@@ -76,6 +117,11 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 	 */
 	protected $_key_exists = FALSE;
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	// ------------------------------------------------------------------------
 
 	/**
@@ -131,7 +177,15 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 	{
 		if (empty($this->_config['save_path']))
 		{
+<<<<<<< HEAD
 			return $this->_fail();
+=======
+<<<<<<< HEAD
+			return $this->_fail();
+=======
+			return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		$redis = new Redis();
@@ -150,10 +204,23 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 		else
 		{
 			$this->_redis = $redis;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			return $this->_success;
 		}
 
 		return $this->_fail();
+<<<<<<< HEAD
+=======
+=======
+			return TRUE;
+		}
+
+		return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -173,17 +240,35 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 			// Needed by write() to detect session_regenerate_id() calls
 			$this->_session_id = $session_id;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			$session_data = $this->_redis->get($this->_key_prefix.$session_id);
 
 			is_string($session_data)
 				? $this->_key_exists = TRUE
 				: $session_data = '';
 
+<<<<<<< HEAD
+=======
+=======
+			$session_data = (string) $this->_redis->get($this->_key_prefix.$session_id);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			$this->_fingerprint = md5($session_data);
 			return $session_data;
 		}
 
+<<<<<<< HEAD
 		return $this->_fail();
+=======
+<<<<<<< HEAD
+		return $this->_fail();
+=======
+		return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -199,15 +284,31 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 	 */
 	public function write($session_id, $session_data)
 	{
+<<<<<<< HEAD
 		if ( ! isset($this->_redis, $this->_lock_key))
 		{
 			return $this->_fail();
+=======
+<<<<<<< HEAD
+		if ( ! isset($this->_redis, $this->_lock_key))
+		{
+			return $this->_fail();
+=======
+		if ( ! isset($this->_redis))
+		{
+			return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 		// Was the ID regenerated?
 		elseif ($session_id !== $this->_session_id)
 		{
 			if ( ! $this->_release_lock() OR ! $this->_get_lock($session_id))
 			{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				return $this->_fail();
 			}
 
@@ -231,6 +332,36 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 		return ($this->_redis->setTimeout($this->_key_prefix.$session_id, $this->_config['expiration']))
 			? $this->_success
 			: $this->_fail();
+<<<<<<< HEAD
+=======
+=======
+				return FALSE;
+			}
+
+			$this->_fingerprint = md5('');
+			$this->_session_id = $session_id;
+		}
+
+		if (isset($this->_lock_key))
+		{
+			$this->_redis->setTimeout($this->_lock_key, 300);
+			if ($this->_fingerprint !== ($fingerprint = md5($session_data)))
+			{
+				if ($this->_redis->set($this->_key_prefix.$session_id, $session_data, $this->_config['expiration']))
+				{
+					$this->_fingerprint = $fingerprint;
+					return TRUE;
+				}
+
+				return FALSE;
+			}
+
+			return $this->_redis->setTimeout($this->_key_prefix.$session_id, $this->_config['expiration']);
+		}
+
+		return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -249,10 +380,23 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 			try {
 				if ($this->_redis->ping() === '+PONG')
 				{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 					$this->_release_lock();
 					if ($this->_redis->close() === FALSE)
 					{
 						return $this->_fail();
+<<<<<<< HEAD
+=======
+=======
+					isset($this->_lock_key) && $this->_redis->delete($this->_lock_key);
+					if ( ! $this->_redis->close())
+					{
+						return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 					}
 				}
 			}
@@ -262,10 +406,23 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 			}
 
 			$this->_redis = NULL;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			return $this->_success;
 		}
 
 		return $this->_success;
+<<<<<<< HEAD
+=======
+=======
+			return TRUE;
+		}
+
+		return TRUE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -287,11 +444,24 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 				log_message('debug', 'Session: Redis::delete() expected to return 1, got '.var_export($result, TRUE).' instead.');
 			}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			$this->_cookie_destroy();
 			return $this->_success;
 		}
 
 		return $this->_fail();
+<<<<<<< HEAD
+=======
+=======
+			return $this->_cookie_destroy();
+		}
+
+		return FALSE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -307,7 +477,15 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 	public function gc($maxlifetime)
 	{
 		// Not necessary, Redis takes care of that.
+<<<<<<< HEAD
 		return $this->_success;
+=======
+<<<<<<< HEAD
+		return $this->_success;
+=======
+		return TRUE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -322,10 +500,20 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 	 */
 	protected function _get_lock($session_id)
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// PHP 7 reuses the SessionHandler object on regeneration,
 		// so we need to check here if the lock key is for the
 		// correct session ID.
 		if ($this->_lock_key === $this->_key_prefix.$session_id.':lock')
+<<<<<<< HEAD
+=======
+=======
+		if (isset($this->_lock_key))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return $this->_redis->setTimeout($this->_lock_key, 300);
 		}
@@ -350,7 +538,15 @@ class CI_Session_redis_driver extends CI_Session_driver implements SessionHandle
 			$this->_lock_key = $lock_key;
 			break;
 		}
+<<<<<<< HEAD
 		while (++$attempt < 30);
+=======
+<<<<<<< HEAD
+		while (++$attempt < 30);
+=======
+		while ($attempt++ < 30);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 		if ($attempt === 30)
 		{

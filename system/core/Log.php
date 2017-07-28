@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.0.0
  * @filesource
  */
@@ -44,7 +65,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Logging
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/general/errors.html
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/general/errors.html
+=======
+ * @link		http://codeigniter.com/user_guide/general/errors.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_Log {
 
@@ -104,6 +133,10 @@ class CI_Log {
 	 */
 	protected $_levels = array('ERROR' => 1, 'DEBUG' => 2, 'INFO' => 3, 'ALL' => 4);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	/**
 	 * mbstring.func_overload flag
 	 *
@@ -111,6 +144,11 @@ class CI_Log {
 	 */
 	protected static $func_overload;
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	// --------------------------------------------------------------------
 
 	/**
@@ -122,8 +160,16 @@ class CI_Log {
 	{
 		$config =& get_config();
 
+<<<<<<< HEAD
 		isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
 
+=======
+<<<<<<< HEAD
+		isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->_log_path = ($config['log_path'] !== '') ? $config['log_path'] : APPPATH.'logs/';
 		$this->_file_ext = (isset($config['log_file_extension']) && $config['log_file_extension'] !== '')
 			? ltrim($config['log_file_extension'], '.') : 'php';
@@ -163,8 +209,18 @@ class CI_Log {
 	 *
 	 * Generally this function will be called using the global log_message() function
 	 *
+<<<<<<< HEAD
 	 * @param	string	$level 	The error level: 'error', 'debug' or 'info'
 	 * @param	string	$msg 	The error message
+=======
+<<<<<<< HEAD
+	 * @param	string	$level 	The error level: 'error', 'debug' or 'info'
+	 * @param	string	$msg 	The error message
+=======
+	 * @param	string	the error level: 'error', 'debug' or 'info'
+	 * @param	string	the error message
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	bool
 	 */
 	public function write_log($level, $msg)
@@ -200,8 +256,16 @@ class CI_Log {
 			return FALSE;
 		}
 
+<<<<<<< HEAD
 		flock($fp, LOCK_EX);
 
+=======
+<<<<<<< HEAD
+		flock($fp, LOCK_EX);
+
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// Instantiating DateTime with microseconds appended to initial date is needed for proper support of this format
 		if (strpos($this->_date_fmt, 'u') !== FALSE)
 		{
@@ -215,11 +279,27 @@ class CI_Log {
 			$date = date($this->_date_fmt);
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$message .= $this->_format_line($level, $date, $msg);
 
 		for ($written = 0, $length = self::strlen($message); $written < $length; $written += $result)
 		{
 			if (($result = fwrite($fp, self::substr($message, $written))) === FALSE)
+<<<<<<< HEAD
+=======
+=======
+		$message .= $level.' - '.$date.' --> '.$msg."\n";
+
+		flock($fp, LOCK_EX);
+
+		for ($written = 0, $length = strlen($message); $written < $length; $written += $result)
+		{
+			if (($result = fwrite($fp, substr($message, $written))) === FALSE)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			{
 				break;
 			}
@@ -236,6 +316,10 @@ class CI_Log {
 		return is_int($result);
 	}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	// --------------------------------------------------------------------
 
 	/**
@@ -293,4 +377,9 @@ class CI_Log {
 			? substr($str, $start, $length)
 			: substr($str, $start);
 	}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 }

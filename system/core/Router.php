@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 1.0.0
  * @filesource
  */
@@ -46,7 +67,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Libraries
  * @author		EllisLab Dev Team
+<<<<<<< HEAD
  * @link		https://codeigniter.com/user_guide/general/routing.html
+=======
+<<<<<<< HEAD
+ * @link		https://codeigniter.com/user_guide/general/routing.html
+=======
+ * @link		http://codeigniter.com/user_guide/general/routing.html
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  */
 class CI_Router {
 
@@ -83,7 +112,15 @@ class CI_Router {
 	 *
 	 * @var	string
 	 */
+<<<<<<< HEAD
 	public $directory;
+=======
+<<<<<<< HEAD
+	public $directory;
+=======
+	public $directory =	'';
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 
 	/**
 	 * Default controller (and method if specific)
@@ -105,7 +142,15 @@ class CI_Router {
 	/**
 	 * Enable query strings flag
 	 *
+<<<<<<< HEAD
 	 * Determines whether to use GET parameters or segment URIs
+=======
+<<<<<<< HEAD
+	 * Determines whether to use GET parameters or segment URIs
+=======
+	 * Determines wether to use GET parameters or segment URIs
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 *
 	 * @var	bool
 	 */
@@ -118,7 +163,14 @@ class CI_Router {
 	 *
 	 * Runs the route mapping function.
 	 *
+<<<<<<< HEAD
 	 * @param	array	$routing
+=======
+<<<<<<< HEAD
+	 * @param	array	$routing
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	void
 	 */
 	public function __construct($routing = NULL)
@@ -127,16 +179,47 @@ class CI_Router {
 		$this->uri =& load_class('URI', 'core');
 
 		$this->enable_query_strings = ( ! is_cli() && $this->config->item('enable_query_strings') === TRUE);
+<<<<<<< HEAD
 
 		// If a directory override is configured, it has to be set before any dynamic routing logic
 		is_array($routing) && isset($routing['directory']) && $this->set_directory($routing['directory']);
+=======
+<<<<<<< HEAD
+
+		// If a directory override is configured, it has to be set before any dynamic routing logic
+		is_array($routing) && isset($routing['directory']) && $this->set_directory($routing['directory']);
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		$this->_set_routing();
 
 		// Set any routing overrides that may exist in the main index file
 		if (is_array($routing))
 		{
+<<<<<<< HEAD
 			empty($routing['controller']) OR $this->set_class($routing['controller']);
 			empty($routing['function'])   OR $this->set_method($routing['function']);
+=======
+<<<<<<< HEAD
+			empty($routing['controller']) OR $this->set_class($routing['controller']);
+			empty($routing['function'])   OR $this->set_method($routing['function']);
+=======
+			if (isset($routing['directory']))
+			{
+				$this->set_directory($routing['directory']);
+			}
+
+			if ( ! empty($routing['controller']))
+			{
+				$this->set_class($routing['controller']);
+			}
+
+			if ( ! empty($routing['function']))
+			{
+				$this->set_method($routing['function']);
+			}
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		}
 
 		log_message('info', 'Router Class Initialized');
@@ -154,6 +237,10 @@ class CI_Router {
 	 */
 	protected function _set_routing()
 	{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// Load the routes.php file. It would be great if we could
 		// skip this for enable_query_strings = TRUE, but then
 		// default_controller would be empty ...
@@ -176,11 +263,20 @@ class CI_Router {
 			$this->routes = $route;
 		}
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// Are query strings enabled in the config file? Normally CI doesn't utilize query strings
 		// since URI segments are more search-engine friendly, but they can optionally be used.
 		// If this feature is enabled, we will gather the directory/class/method a little differently
 		if ($this->enable_query_strings)
 		{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			// If the directory is set at this time, it means an override exists, so skip the checks
 			if ( ! isset($this->directory))
 			{
@@ -192,6 +288,17 @@ class CI_Router {
 					$this->uri->filter_uri($_d);
 					$this->set_directory($_d);
 				}
+<<<<<<< HEAD
+=======
+=======
+			$_d = $this->config->item('directory_trigger');
+			$_d = isset($_GET[$_d]) ? trim($_GET[$_d], " \t\n\r\0\x0B/") : '';
+			if ($_d !== '')
+			{
+				$this->uri->filter_uri($_d);
+				$this->set_directory($_d);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			}
 
 			$_c = trim($this->config->item('controller_trigger'));
@@ -222,6 +329,32 @@ class CI_Router {
 			return;
 		}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		// Load the routes.php file.
+		if (file_exists(APPPATH.'config/routes.php'))
+		{
+			include(APPPATH.'config/routes.php');
+		}
+
+		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/routes.php'))
+		{
+			include(APPPATH.'config/'.ENVIRONMENT.'/routes.php');
+		}
+
+		// Validate & get reserved routes
+		if (isset($route) && is_array($route))
+		{
+			isset($route['default_controller']) && $this->default_controller = $route['default_controller'];
+			isset($route['translate_uri_dashes']) && $this->translate_uri_dashes = $route['translate_uri_dashes'];
+			unset($route['default_controller'], $route['translate_uri_dashes']);
+			$this->routes = $route;
+		}
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// Is there anything to parse?
 		if ($this->uri->uri_string !== '')
 		{
@@ -332,8 +465,16 @@ class CI_Router {
 	protected function _validate_request($segments)
 	{
 		$c = count($segments);
+<<<<<<< HEAD
 		$directory_override = isset($this->directory);
 
+=======
+<<<<<<< HEAD
+		$directory_override = isset($this->directory);
+
+=======
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// Loop through our segments and return as soon as a controller
 		// is found or when such a directory doesn't exist
 		while ($c-- > 0)
@@ -341,10 +482,20 @@ class CI_Router {
 			$test = $this->directory
 				.ucfirst($this->translate_uri_dashes === TRUE ? str_replace('-', '_', $segments[0]) : $segments[0]);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			if ( ! file_exists(APPPATH.'controllers/'.$test.'.php')
 				&& $directory_override === FALSE
 				&& is_dir(APPPATH.'controllers/'.$this->directory.$segments[0])
 			)
+<<<<<<< HEAD
+=======
+=======
+			if ( ! file_exists(APPPATH.'controllers/'.$test.'.php') && is_dir(APPPATH.'controllers/'.$this->directory.$segments[0]))
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 			{
 				$this->set_directory(array_shift($segments), TRUE);
 				continue;
@@ -375,6 +526,10 @@ class CI_Router {
 		// Get HTTP verb
 		$http_verb = isset($_SERVER['REQUEST_METHOD']) ? strtolower($_SERVER['REQUEST_METHOD']) : 'cli';
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		// Loop through the route array looking for wildcards
 		foreach ($this->routes as $key => $val)
 		{
@@ -382,6 +537,34 @@ class CI_Router {
 			if (is_array($val))
 			{
 				$val = array_change_key_case($val, CASE_LOWER);
+<<<<<<< HEAD
+=======
+=======
+		// Is there a literal match?  If so we're done
+		if (isset($this->routes[$uri]))
+		{
+			// Check default routes format
+			if (is_string($this->routes[$uri]))
+			{
+				$this->_set_request(explode('/', $this->routes[$uri]));
+				return;
+			}
+			// Is there a matching http verb?
+			elseif (is_array($this->routes[$uri]) && isset($this->routes[$uri][$http_verb]))
+			{
+				$this->_set_request(explode('/', $this->routes[$uri][$http_verb]));
+				return;
+			}
+		}
+
+		// Loop through the route array looking for wildcards
+		foreach ($this->routes as $key => $val)
+		{
+			// Check if route format is using http verb
+			if (is_array($val))
+			{
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 				if (isset($val[$http_verb]))
 				{
 					$val = $val[$http_verb];
@@ -481,7 +664,15 @@ class CI_Router {
 	 * Set directory name
 	 *
 	 * @param	string	$dir	Directory name
+<<<<<<< HEAD
 	 * @param	bool	$append	Whether we're appending rather than setting the full value
+=======
+<<<<<<< HEAD
+	 * @param	bool	$append	Whether we're appending rather than setting the full value
+=======
+	 * @param	bool	$appent	Whether we're appending rather then setting the full value
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	void
 	 */
 	public function set_directory($dir, $append = FALSE)

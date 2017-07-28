@@ -6,7 +6,15 @@
  *
  * This content is released under the MIT License (MIT)
  *
+<<<<<<< HEAD
  * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+<<<<<<< HEAD
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+=======
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +36,23 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
+<<<<<<< HEAD
+=======
+=======
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
  * @since	Version 3.0.0
  * @filesource
  */
@@ -79,6 +100,10 @@ class CI_Cache_redis extends CI_Driver
 	// ------------------------------------------------------------------------
 
 	/**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * Class constructor
 	 *
 	 * Setup Redis
@@ -147,6 +172,14 @@ class CI_Cache_redis extends CI_Driver
 	 * Get cache
 	 *
 	 * @param	string	$key	Cache ID
+<<<<<<< HEAD
+=======
+=======
+	 * Get cache
+	 *
+	 * @param	string	Cache ID
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	mixed
 	 */
 	public function get($key)
@@ -190,7 +223,17 @@ class CI_Cache_redis extends CI_Driver
 			$this->_redis->sRemove('_ci_redis_serialized', $id);
 		}
 
+<<<<<<< HEAD
 		return $this->_redis->set($id, $data, $ttl);
+=======
+<<<<<<< HEAD
+		return $this->_redis->set($id, $data, $ttl);
+=======
+		return ($ttl)
+			? $this->_redis->setex($id, $ttl, $data)
+			: $this->_redis->set($id, $data);
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -198,7 +241,15 @@ class CI_Cache_redis extends CI_Driver
 	/**
 	 * Delete from cache
 	 *
+<<<<<<< HEAD
 	 * @param	string	$key	Cache key
+=======
+<<<<<<< HEAD
+	 * @param	string	$key	Cache key
+=======
+	 * @param	string	Cache key
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	bool
 	 */
 	public function delete($key)
@@ -263,9 +314,21 @@ class CI_Cache_redis extends CI_Driver
 	/**
 	 * Get cache driver info
 	 *
+<<<<<<< HEAD
 	 * @param	string	$type	Not supported in Redis.
 	 *				Only included in order to offer a
 	 *				consistent cache API.
+=======
+<<<<<<< HEAD
+	 * @param	string	$type	Not supported in Redis.
+	 *				Only included in order to offer a
+	 *				consistent cache API.
+=======
+	 * @param	string	Not supported in Redis.
+	 *			Only included in order to offer a
+	 *			consistent cache API.
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	array
 	 * @see		Redis::info()
 	 */
@@ -279,14 +342,30 @@ class CI_Cache_redis extends CI_Driver
 	/**
 	 * Get cache metadata
 	 *
+<<<<<<< HEAD
 	 * @param	string	$key	Cache key
+=======
+<<<<<<< HEAD
+	 * @param	string	$key	Cache key
+=======
+	 * @param	string	Cache key
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	 * @return	array
 	 */
 	public function get_metadata($key)
 	{
 		$value = $this->get($key);
 
+<<<<<<< HEAD
 		if ($value !== FALSE)
+=======
+<<<<<<< HEAD
+		if ($value !== FALSE)
+=======
+		if ($value)
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 		{
 			return array(
 				'expire' => time() + $this->_redis->ttl($key),
@@ -306,7 +385,84 @@ class CI_Cache_redis extends CI_Driver
 	 */
 	public function is_supported()
 	{
+<<<<<<< HEAD
 		return extension_loaded('redis');
+=======
+<<<<<<< HEAD
+		return extension_loaded('redis');
+=======
+		if ( ! extension_loaded('redis'))
+		{
+			log_message('debug', 'The Redis extension must be loaded to use Redis cache.');
+			return FALSE;
+		}
+
+		return $this->_setup_redis();
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Setup Redis config and connection
+	 *
+	 * Loads Redis config file if present. Will halt execution
+	 * if a Redis connection can't be established.
+	 *
+	 * @return	bool
+	 * @see		Redis::connect()
+	 */
+	protected function _setup_redis()
+	{
+		$config = array();
+		$CI =& get_instance();
+
+		if ($CI->config->load('redis', TRUE, TRUE))
+		{
+			$config += $CI->config->item('redis');
+		}
+
+		$config = array_merge(self::$_default_config, $config);
+
+		$this->_redis = new Redis();
+
+		try
+		{
+			if ($config['socket_type'] === 'unix')
+			{
+				$success = $this->_redis->connect($config['socket']);
+			}
+			else // tcp socket
+			{
+				$success = $this->_redis->connect($config['host'], $config['port'], $config['timeout']);
+			}
+
+			if ( ! $success)
+			{
+				log_message('debug', 'Cache: Redis connection refused. Check the config.');
+				return FALSE;
+			}
+		}
+		catch (RedisException $e)
+		{
+			log_message('debug', 'Cache: Redis connection refused ('.$e->getMessage().')');
+			return FALSE;
+		}
+
+		if (isset($config['password']))
+		{
+			$this->_redis->auth($config['password']);
+		}
+
+		// Initialize the index of serialized values.
+		$serialized = $this->_redis->sMembers('_ci_redis_serialized');
+		if ( ! empty($serialized))
+		{
+			$this->_serialized = array_flip($serialized);
+		}
+
+		return TRUE;
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 	}
 
 	// ------------------------------------------------------------------------
@@ -325,4 +481,11 @@ class CI_Cache_redis extends CI_Driver
 			$this->_redis->close();
 		}
 	}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8cd45ab3c29762c5ce11b638e33e32d02c7ca9f7
+>>>>>>> e191afbd1e524450cb37defd6ef385500e9bfeb7
 }
